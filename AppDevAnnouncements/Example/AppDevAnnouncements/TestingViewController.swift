@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import AppDevAnnouncements
 
 class TestingViewController: UIViewController {
 
@@ -35,6 +36,8 @@ class TestingViewController: UIViewController {
     }
 
     @objc func presentModal(){
+        //let notification = AnnouncementNotification()
+        //not recognizing from pods
         present(GivingDayViewController(), animated: true)
     }
 

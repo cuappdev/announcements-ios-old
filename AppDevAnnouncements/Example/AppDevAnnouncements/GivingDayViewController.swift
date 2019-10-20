@@ -12,25 +12,18 @@ import UIKit
 
 class GivingDayViewController: UIViewController {
 
-    var givingDayPopupView: GivingDayView!
+    var givingDayPopupView: NotificationView!
     var blurEffectView: UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        
-        // blur effect setup
-        if !UIAccessibility.isReduceTransparencyEnabled {
-            view.isOpaque = false
-            let blurEffect = UIBlurEffect(style: .dark)
-            blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            view.addSubview(blurEffectView)
-        }
-        
-        givingDayPopupView = GivingDayView()
-        givingDayPopupView.closePopupButton.addTarget(self, action: #selector(dismissPopup), for: .touchUpInside)
-        givingDayPopupView.donateButton.addTarget(self, action: #selector(openDonateSite), for: .touchUpInside)
+
+        givingDayPopupView = NotificationView()
+        givingDayPopupView.dismissButton.addTarget(self, action: #selector(dismissPopup), for: .touchUpInside)
+        givingDayPopupView.ctaButton.addTarget(self, action: #selector(openDonateSite), for: .touchUpInside)
+        //givingDayPopupView.closePopupButton.addTarget(self, action: #selector(dismissPopup), for: .touchUpInside)
+        //givingDayPopupView.donateButton.addTarget(self, action: #selector(openDonateSite), for: .touchUpInside)
         givingDayPopupView.layer.cornerRadius = 10
         givingDayPopupView.clipsToBounds = true
         view.addSubview(givingDayPopupView)
@@ -39,9 +32,6 @@ class GivingDayViewController: UIViewController {
     }
     
     func setupConstraints(){
-        blurEffectView.snp.makeConstraints { make in
-            make.top.trailing.leading.bottom.equalToSuperview()
-        }
         
         givingDayPopupView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()

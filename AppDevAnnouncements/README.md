@@ -22,7 +22,7 @@ pod 'AppDevAnnouncements'
 
 ## Author
 
-Gonzalo Gonzalez, gg387@cornell.edu
+Cornell AppDev, cornellappdev@gmail.com
 
 ## License
 
