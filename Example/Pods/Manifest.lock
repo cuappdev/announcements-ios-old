@@ -1,0 +1,16 @@
+PODS:
+  - AppDevAnnouncements (0.1.0)
+
+DEPENDENCIES:
+  - AppDevAnnouncements (from `../`)
+
+EXTERNAL SOURCES:
+  AppDevAnnouncements:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AppDevAnnouncements: 86728275fbae048cef55a0346a7f489ef76d74ce
+
+PODFILE CHECKSUM: d1721b725f32922faee2433944a9ffe07a19e319
+
+COCOAPODS: 1.7.5
