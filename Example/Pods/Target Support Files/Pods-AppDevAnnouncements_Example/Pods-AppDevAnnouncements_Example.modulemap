@@ -1,6 +1,0 @@
-framework module Pods_AppDevAnnouncements_Example {
-  umbrella header "Pods-AppDevAnnouncements_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

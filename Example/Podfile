@@ -1,6 +1,0 @@
-use_frameworks!
-
-target 'AppDevAnnouncements_Example' do
-  pod 'AppDevAnnouncements', :path => '../'
-
-end
