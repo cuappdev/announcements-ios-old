@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class NotificationView: UIView {
 
@@ -14,16 +15,9 @@ class NotificationView: UIView {
     var notificationContainerView: UIView!
     var dismissButton: UIButton!
     var visualImageView: UIImageView!
-    var titleLabel: UILabel!
-    var descriptionTextView: UITextView!
+    var subjectLabel: UILabel!
+    var bodyTextView: UITextView!
     var ctaButton: UIButton!
-
-    // Parameters
-    var visual : UIImage
-    var title : String
-    var description : String
-    var ctaText : String
-    var ctaAction : URL
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,31 +31,23 @@ class NotificationView: UIView {
         addSubview(dismissButton)
 
         visualImageView = UIImageView()
-        visualImageView.image = visual//UIImage(named: "givingDayApps") // TODO: Announcement.visual
         visualImageView.contentMode = .scaleAspectFit
         addSubview(visualImageView)
 
-        titleLabel = UILabel()
-        titleLabel.text = title//"Support Us On Giving Day 3.14"
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        addSubview(titleLabel)
+        subjectLabel = UILabel()
+        subjectLabel.numberOfLines = 0
+        subjectLabel.textAlignment = .center
+        subjectLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        addSubview(subjectLabel)
 
-        descriptionTextView = UITextView()
-        //line spacing
-        let style = NSMutableParagraphStyle()
-        style.lineSpacing = 6
-        let attributes = [NSAttributedString.Key.paragraphStyle : style]
-        descriptionTextView.attributedText = NSAttributedString(string: description/*"Support Eatery by donating to Cornell AppDev! Funding will help us add new features like crowdedness, collegetown eateries, and more!"*/, attributes: attributes)
-        descriptionTextView.isSelectable = false
-        descriptionTextView.isScrollEnabled = false
-        descriptionTextView.textAlignment = .center
-        descriptionTextView.font = UIFont.systemFont(ofSize: 13)
-        addSubview(descriptionTextView)
+        bodyTextView = UITextView()
+        bodyTextView.isSelectable = false
+        bodyTextView.isScrollEnabled = false
+        bodyTextView.textAlignment = .center
+        bodyTextView.font = UIFont.systemFont(ofSize: 13)
+        addSubview(bodyTextView)
 
         ctaButton = UIButton()
-        ctaButton.setTitle(ctaText/*"Donate"*/, for: .normal)
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.backgroundColor = .red
         ctaButton.layer.cornerRadius = 5
@@ -70,7 +56,11 @@ class NotificationView: UIView {
         setupConstraints()
 
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setupConstraints(){
         notificationContainerView.snp.makeConstraints { make in
             make.top.leading.trailing.width.equalToSuperview()
@@ -89,14 +79,14 @@ class NotificationView: UIView {
             make.height.equalTo(76)
         }
 
-        titleLabel.snp.makeConstraints { make in
+        subjectLabel.snp.makeConstraints { make in
             make.top.equalTo(visualImageView).inset(100)
             make.leading.trailing.equalTo(notificationContainerView).inset(70)
             make.height.equalTo(50)
         }
 
-        descriptionTextView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel).inset(24)
+        bodyTextView.snp.makeConstraints { make in
+            make.top.equalTo(subjectLabel).inset(24)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(100)
         }

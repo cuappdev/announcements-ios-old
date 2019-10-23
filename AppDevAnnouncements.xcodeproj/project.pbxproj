@@ -9,13 +9,7 @@
 /* Begin PBXBuildFile section */
 		87ED7F73235EE12700AE3546 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F6F235EE12700AE3546 /* NotificationView.swift */; };
 		87ED7F74235EE12700AE3546 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F70235EE12700AE3546 /* Announcement.swift */; };
-		87ED7F75235EE12700AE3546 /* AnnouncementNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F71235EE12700AE3546 /* AnnouncementNotification.swift */; };
 		87ED7F76235EE12700AE3546 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F72235EE12700AE3546 /* NotificationViewController.swift */; };
-		87ED7F7C235EE13000AE3546 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F77235EE13000AE3546 /* TestingViewController.swift */; };
-		87ED7F7D235EE13000AE3546 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F78235EE13000AE3546 /* NotificationView.swift */; };
-		87ED7F7E235EE13000AE3546 /* GivingDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F79235EE13000AE3546 /* GivingDayViewController.swift */; };
-		87ED7F7F235EE13000AE3546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87ED7F7A235EE13000AE3546 /* Assets.xcassets */; };
-		87ED7F80235EE13000AE3546 /* GivingDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F7B235EE13000AE3546 /* GivingDayView.swift */; };
 		9A42111139AE106516E3C59E /* Pods_AppDevAnnouncements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EE955926B7E6847AB6C30F /* Pods_AppDevAnnouncements.framework */; };
 		C28AAC0E235ED9FF00A0FC09 /* AppDevAnnouncements.h in Headers */ = {isa = PBXBuildFile; fileRef = C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -23,13 +17,7 @@
 /* Begin PBXFileReference section */
 		87ED7F6F235EE12700AE3546 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		87ED7F70235EE12700AE3546 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
-		87ED7F71235EE12700AE3546 /* AnnouncementNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementNotification.swift; sourceTree = "<group>"; };
 		87ED7F72235EE12700AE3546 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		87ED7F77235EE13000AE3546 /* TestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
-		87ED7F78235EE13000AE3546 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		87ED7F79235EE13000AE3546 /* GivingDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivingDayViewController.swift; sourceTree = "<group>"; };
-		87ED7F7A235EE13000AE3546 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		87ED7F7B235EE13000AE3546 /* GivingDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivingDayView.swift; sourceTree = "<group>"; };
 		AA3C75F60883F053FEDC971B /* Pods-AppDevAnnouncements.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDevAnnouncements.debug.xcconfig"; path = "Target Support Files/Pods-AppDevAnnouncements/Pods-AppDevAnnouncements.debug.xcconfig"; sourceTree = "<group>"; };
 		C28AAC09235ED9FF00A0FC09 /* AppDevAnnouncements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppDevAnnouncements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDevAnnouncements.h; sourceTree = "<group>"; };
@@ -59,18 +47,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		87ED7F56235EDECE00AE3546 /* Test Environment */ = {
-			isa = PBXGroup;
-			children = (
-				87ED7F7A235EE13000AE3546 /* Assets.xcassets */,
-				87ED7F7B235EE13000AE3546 /* GivingDayView.swift */,
-				87ED7F79235EE13000AE3546 /* GivingDayViewController.swift */,
-				87ED7F78235EE13000AE3546 /* NotificationView.swift */,
-				87ED7F77235EE13000AE3546 /* TestingViewController.swift */,
-			);
-			path = "Test Environment";
-			sourceTree = "<group>";
-		};
 		C28AABFF235ED9FF00A0FC09 = {
 			isa = PBXGroup;
 			children = (
@@ -92,7 +68,6 @@
 		C28AAC0B235ED9FF00A0FC09 /* AppDevAnnouncements */ = {
 			isa = PBXGroup;
 			children = (
-				87ED7F56235EDECE00AE3546 /* Test Environment */,
 				C28AAC14235EDAA400A0FC09 /* Classes */,
 				C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */,
 				C28AAC0D235ED9FF00A0FC09 /* Info.plist */,
@@ -104,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				87ED7F70235EE12700AE3546 /* Announcement.swift */,
-				87ED7F71235EE12700AE3546 /* AnnouncementNotification.swift */,
 				87ED7F6F235EE12700AE3546 /* NotificationView.swift */,
 				87ED7F72235EE12700AE3546 /* NotificationViewController.swift */,
 			);
@@ -190,7 +164,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87ED7F7F235EE13000AE3546 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,14 +199,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87ED7F75235EE12700AE3546 /* AnnouncementNotification.swift in Sources */,
 				87ED7F74235EE12700AE3546 /* Announcement.swift in Sources */,
 				87ED7F76235EE12700AE3546 /* NotificationViewController.swift in Sources */,
-				87ED7F7C235EE13000AE3546 /* TestingViewController.swift in Sources */,
-				87ED7F7E235EE13000AE3546 /* GivingDayViewController.swift in Sources */,
 				87ED7F73235EE12700AE3546 /* NotificationView.swift in Sources */,
-				87ED7F7D235EE13000AE3546 /* NotificationView.swift in Sources */,
-				87ED7F80235EE13000AE3546 /* GivingDayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

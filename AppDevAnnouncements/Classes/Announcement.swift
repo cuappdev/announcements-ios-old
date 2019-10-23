@@ -9,9 +9,9 @@
 import UIKit
 
 struct Announcement: Codable {
-    let visual : UIImage
-    let title : String
-    let description : String
+    let visual : String // in the form of a URL
+    let subject : String
+    let body : String
     let ctaText : String // cta - call to action
-    let ctaAction : URL // for now, one for sure example is a URL
+    let ctaAction : String // for now, one for sure example is a URL
 }
