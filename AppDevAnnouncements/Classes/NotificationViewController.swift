@@ -23,7 +23,14 @@ class NotificationViewController: UIViewController {
     private var ctaAction : String!
     private var delegate : NotificationDelegate!
 
-    init(imageUrl: String, subject: String, body: String, ctaText: String, ctaAction: String, delegate: NotificationDelegate) {
+    init(
+        imageUrl: String,
+        subject: String,
+        body: String,
+        ctaText: String,
+        ctaAction: String,
+        delegate: NotificationDelegate
+    ) {
         super.init(nibName: nil, bundle: nil)
         self.imageUrl = imageUrl
         self.subject = subject

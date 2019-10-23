@@ -24,4 +24,5 @@ struct Announcement: Codable {
 
     /// The only action currently supported: visiting a URL
     let ctaAction : String
+    
 }

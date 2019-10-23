@@ -11,7 +11,7 @@ import SnapKit
 
 class NotificationView: UIView {
 
-    // Components
+    /// Components
     private let notificationContainerView = UIView()
     private let dismissButton = UIButton()
     private let visualImageView = UIImageView()
@@ -19,7 +19,15 @@ class NotificationView: UIView {
     private let bodyTextView = UITextView()
     private let ctaButton = UIButton()
 
-    init(dismissFunc: Selector, imageUrl: String, subject: String, body: String, ctaText: String, actionFunc: Selector, target: UIViewController) {
+    init(
+        dismissFunc: Selector,
+        imageUrl: String,
+        subject: String,
+        body: String,
+        ctaText: String,
+        actionFunc: Selector,
+        target: UIViewController
+    ) {
         super.init(frame: .zero)
 
         notificationContainerView.backgroundColor = .white
