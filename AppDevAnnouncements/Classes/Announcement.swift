@@ -9,9 +9,19 @@
 import UIKit
 
 struct Announcement: Codable {
-    let visualUrl : String // in the form of a URL
+
+    /// The URL of the image
+    let imageUrl : String
+
+    /// The header title of the notification
     let subject : String
+
+    /// The main text of the notification
     let body : String
-    let ctaText : String // cta - call to action
-    let ctaAction : String // for now, one for sure example is a URL
+
+    /// CTA - Call To Action
+    let ctaText : String
+
+    /// The only action currently supported: visiting a URL
+    let ctaAction : String
 }

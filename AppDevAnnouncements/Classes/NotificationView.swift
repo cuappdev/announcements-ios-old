@@ -19,40 +19,36 @@ class NotificationView: UIView {
     private let bodyTextView = UITextView()
     private let ctaButton = UIButton()
 
-    convenience init(dismissFunc: Selector, visualUrl: String, subject: String, body: String, ctaText: String, actionFunc: Selector, target: UIViewController) {
-        self.init()
-        dismissButton.addTarget(target, action: dismissFunc, for: .touchUpInside)
-        visualImageView.image = UIImage(named: visualUrl)
-        subjectLabel.text = subject
-        bodyTextView.text = body
-        ctaButton.setTitle(ctaText, for: .normal)
-        ctaButton.addTarget(target, action: actionFunc, for: .touchUpInside)
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(dismissFunc: Selector, imageUrl: String, subject: String, body: String, ctaText: String, actionFunc: Selector, target: UIViewController) {
+        super.init(frame: .zero)
 
         notificationContainerView.backgroundColor = .white
         addSubview(notificationContainerView)
 
         dismissButton.setImage(UIImage(named: "closeIcon"), for: .normal) // TODO: default image for dismissing?
+        dismissButton.addTarget(target, action: dismissFunc, for: .touchUpInside)
         addSubview(dismissButton)
 
         visualImageView.contentMode = .scaleAspectFit
+        visualImageView.image = UIImage(named: imageUrl)
         addSubview(visualImageView)
 
         subjectLabel.numberOfLines = 0
         subjectLabel.textAlignment = .center
         subjectLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        subjectLabel.text = subject
         addSubview(subjectLabel)
 
         bodyTextView.isSelectable = false
         bodyTextView.isScrollEnabled = false
         bodyTextView.textAlignment = .center
         bodyTextView.font = UIFont.systemFont(ofSize: 13)
+        bodyTextView.text = body
         addSubview(bodyTextView)
 
+        ctaButton.setTitle(ctaText, for: .normal)
         ctaButton.setTitleColor(.white, for: .normal)
+        ctaButton.addTarget(target, action: actionFunc, for: .touchUpInside)
         ctaButton.backgroundColor = .red
         ctaButton.layer.cornerRadius = 5
         addSubview(ctaButton)

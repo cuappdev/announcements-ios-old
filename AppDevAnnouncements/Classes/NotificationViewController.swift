@@ -16,16 +16,16 @@ class NotificationViewController: UIViewController {
 
     private var notificationView: NotificationView!
 
-    private var visualUrl : String!
+    private var imageUrl : String!
     private var subject : String!
     private var body : String!
     private var ctaText : String!
     private var ctaAction : String!
     private var delegate : NotificationDelegate!
 
-    convenience init(visualUrl: String, subject: String, body: String, ctaText: String, ctaAction: String, delegate: NotificationDelegate) {
-        self.init()
-        self.visualUrl = visualUrl
+    init(imageUrl: String, subject: String, body: String, ctaText: String, ctaAction: String, delegate: NotificationDelegate) {
+        super.init(nibName: nil, bundle: nil)
+        self.imageUrl = imageUrl
         self.subject = subject
         self.body = body
         self.ctaText = ctaText
@@ -37,7 +37,7 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .clear
 
-        notificationView = NotificationView(dismissFunc: #selector(dismissPopup), visualUrl: visualUrl, subject: subject, body: body, ctaText: ctaText, actionFunc: #selector(openSite), target: self)
+        notificationView = NotificationView(dismissFunc: #selector(dismissNotification), imageUrl: imageUrl, subject: subject, body: body, ctaText: ctaText, actionFunc: #selector(performCTA), target: self)
         notificationView.layer.cornerRadius = 10
         notificationView.clipsToBounds = true
         view.addSubview(notificationView)
@@ -55,19 +55,24 @@ class NotificationViewController: UIViewController {
     }
 
     private func presentNotification() {
-        //some backend stuff goes here later
+        // TODO: Add backend logic later on
         modalPresentationStyle = .overFullScreen
         delegate.present(self)
     }
     
-    @objc private func dismissPopup() {
+    @objc private func dismissNotification() {
         dismiss(animated: true, completion: nil)
     }
 
-    @objc private func openSite() {
-        // since ctaAction is currently only a URL, this is the only function it could possibly perform
+    /// Executes the CTA. The currently supported CTAs are:
+    /// - URLs
+    @objc private func performCTA() {
         let url = URL(string: ctaAction)!
         UIApplication.shared.open(url)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }
