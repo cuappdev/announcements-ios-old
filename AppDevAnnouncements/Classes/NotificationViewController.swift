@@ -46,7 +46,7 @@ class NotificationViewController: UIViewController {
         presentNotification()
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         notificationView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.height.equalTo(431)
@@ -54,17 +54,17 @@ class NotificationViewController: UIViewController {
         }
     }
 
-    private func presentNotification(){
+    private func presentNotification() {
         //some backend stuff goes here later
         modalPresentationStyle = .overFullScreen
         delegate.present(self)
     }
     
-    @objc private func dismissPopup(){
+    @objc private func dismissPopup() {
         dismiss(animated: true, completion: nil)
     }
 
-    @objc private func openSite(){
+    @objc private func openSite() {
         // since ctaAction is currently only a URL, this is the only function it could possibly perform
         let url = URL(string: ctaAction)!
         UIApplication.shared.open(url)

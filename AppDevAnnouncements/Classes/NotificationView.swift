@@ -60,7 +60,7 @@ class NotificationView: UIView {
         setupConstraints()
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         notificationContainerView.snp.makeConstraints { make in
             make.top.leading.trailing.width.equalToSuperview()
             make.height.equalTo(431)
