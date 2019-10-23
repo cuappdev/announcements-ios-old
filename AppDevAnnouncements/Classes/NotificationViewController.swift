@@ -14,20 +14,18 @@ protocol NotificationDelegate: class {
 
 class NotificationViewController: UIViewController {
 
-    var notificationView: NotificationView!
+    private var notificationView: NotificationView!
 
-    var visual : String?
-    var subject : String?
-    var body : String?
-    var ctaText : String?
-    var ctaAction : String?
+    private var visualUrl : String!
+    private var subject : String!
+    private var body : String!
+    private var ctaText : String!
+    private var ctaAction : String!
+    private var delegate : NotificationDelegate!
 
-    var presenter: UIViewController?
-    weak var delegate : NotificationDelegate?
-
-    convenience init(visual: String?, subject: String?, body: String?, ctaText: String?, ctaAction: String?, delegate: NotificationDelegate) {
-        self.init(nibName:nil, bundle:nil)
-        self.visual = visual
+    convenience init(visualUrl: String, subject: String, body: String, ctaText: String, ctaAction: String, delegate: NotificationDelegate) {
+        self.init()
+        self.visualUrl = visualUrl
         self.subject = subject
         self.body = body
         self.ctaText = ctaText
@@ -39,21 +37,7 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .clear
 
-        notificationView = NotificationView()
-        if let unwrappedVisual = visual {
-            notificationView.visualImageView.image = UIImage(named: unwrappedVisual)
-        }
-        if let unwrappedSubject = subject {
-            notificationView.subjectLabel.text = unwrappedSubject
-        }
-        if let unwrappedBody = body {
-            notificationView.bodyTextView.text = unwrappedBody
-        }
-        if let unwrappedCTAText = ctaText {
-            notificationView.ctaButton.setTitle(unwrappedCTAText, for: .normal)
-        }
-        notificationView.dismissButton.addTarget(self, action: #selector(dismissPopup), for: .touchUpInside)
-        notificationView.ctaButton.addTarget(self, action: #selector(openSite), for: .touchUpInside)
+        notificationView = NotificationView(dismissFunc: #selector(dismissPopup), visualUrl: visualUrl, subject: subject, body: body, ctaText: ctaText, actionFunc: #selector(openSite), target: self)
         notificationView.layer.cornerRadius = 10
         notificationView.clipsToBounds = true
         view.addSubview(notificationView)
@@ -62,7 +46,7 @@ class NotificationViewController: UIViewController {
         presentNotification()
     }
     
-    func setupConstraints(){
+    private func setupConstraints(){
         notificationView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
             make.height.equalTo(431)
@@ -70,20 +54,19 @@ class NotificationViewController: UIViewController {
         }
     }
 
-    func presentNotification(){
+    private func presentNotification(){
         //some backend stuff goes here later
         modalPresentationStyle = .overFullScreen
-        delegate?.present(self)
+        delegate.present(self)
     }
     
-    @objc func dismissPopup(){
+    @objc private func dismissPopup(){
         dismiss(animated: true, completion: nil)
     }
 
-    @objc func openSite(){
+    @objc private func openSite(){
         // since ctaAction is currently only a URL, this is the only function it could possibly perform
-        guard let unwrappedAction = ctaAction else { return }
-        let url = URL(string: unwrappedAction)!
+        let url = URL(string: ctaAction)!
         UIApplication.shared.open(url)
     }
 

@@ -12,56 +12,55 @@ import SnapKit
 class NotificationView: UIView {
 
     // Components
-    var notificationContainerView: UIView!
-    var dismissButton: UIButton!
-    var visualImageView: UIImageView!
-    var subjectLabel: UILabel!
-    var bodyTextView: UITextView!
-    var ctaButton: UIButton!
+    private let notificationContainerView = UIView()
+    private let dismissButton = UIButton()
+    private let visualImageView = UIImageView()
+    private let subjectLabel = UILabel()
+    private let bodyTextView = UITextView()
+    private let ctaButton = UIButton()
+
+    convenience init(dismissFunc: Selector, visualUrl: String, subject: String, body: String, ctaText: String, actionFunc: Selector, target: UIViewController) {
+        self.init()
+        dismissButton.addTarget(target, action: dismissFunc, for: .touchUpInside)
+        visualImageView.image = UIImage(named: visualUrl)
+        subjectLabel.text = subject
+        bodyTextView.text = body
+        ctaButton.setTitle(ctaText, for: .normal)
+        ctaButton.addTarget(target, action: actionFunc, for: .touchUpInside)
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        notificationContainerView = UIView()
         notificationContainerView.backgroundColor = .white
         addSubview(notificationContainerView)
 
-        dismissButton = UIButton()
         dismissButton.setImage(UIImage(named: "closeIcon"), for: .normal) // TODO: default image for dismissing?
         addSubview(dismissButton)
 
-        visualImageView = UIImageView()
         visualImageView.contentMode = .scaleAspectFit
         addSubview(visualImageView)
 
-        subjectLabel = UILabel()
         subjectLabel.numberOfLines = 0
         subjectLabel.textAlignment = .center
         subjectLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         addSubview(subjectLabel)
 
-        bodyTextView = UITextView()
         bodyTextView.isSelectable = false
         bodyTextView.isScrollEnabled = false
         bodyTextView.textAlignment = .center
         bodyTextView.font = UIFont.systemFont(ofSize: 13)
         addSubview(bodyTextView)
 
-        ctaButton = UIButton()
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.backgroundColor = .red
         ctaButton.layer.cornerRadius = 5
         addSubview(ctaButton)
 
         setupConstraints()
-
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupConstraints(){
+    private func setupConstraints(){
         notificationContainerView.snp.makeConstraints { make in
             make.top.leading.trailing.width.equalToSuperview()
             make.height.equalTo(431)
@@ -97,7 +96,10 @@ class NotificationView: UIView {
             make.width.equalTo(92)
             make.height.equalTo(40)
         }
+    }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 struct Announcement: Codable {
-    let visual : String // in the form of a URL
+    let visualUrl : String // in the form of a URL
     let subject : String
     let body : String
     let ctaText : String // cta - call to action
