@@ -11,7 +11,7 @@ import UIKit
 struct Announcement: Codable {
 
     /// The URL of the image
-    let imageUrl : String
+    let imageUrl : String?
 
     /// The header title of the notification
     let subject : String

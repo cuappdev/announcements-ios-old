@@ -16,7 +16,7 @@ class NotificationViewController: UIViewController {
 
     private var notificationView: NotificationView!
 
-    private var imageUrl : String!
+    private var imageUrl : String?
     private var subject : String!
     private var body : String!
     private var ctaText : String!
@@ -24,7 +24,7 @@ class NotificationViewController: UIViewController {
     private var delegate : NotificationDelegate!
 
     init(
-        imageUrl: String,
+        imageUrl: String?,
         subject: String,
         body: String,
         ctaText: String,
@@ -56,8 +56,8 @@ class NotificationViewController: UIViewController {
     private func setupConstraints() {
         notificationView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
-            make.height.equalTo(431)
-            make.width.equalTo(288)
+            make.height.equalTo(imageUrl != nil ? 345 : 244)
+            make.width.equalTo(327)
         }
     }
 
