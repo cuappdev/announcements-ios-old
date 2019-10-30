@@ -30,13 +30,13 @@ struct Announcement: Codable {
         : NotificationView.Constants.baseTopPortionViewHeight + NotificationView.Constants.extraImageHeight
     }
 
-    var bodyTextViewHeight: CGFloat {
-        let bodyTextViewWidth = NotificationViewController.Constants.notificationViewWidth - NotificationView.Constants.bodyTextViewHorizontalPadding * 2
-        return Utils.getTextHeight(for: Utils.attributedString(for: body), withConstrainedWidth: bodyTextViewWidth)
+    var bodyLabelHeight: CGFloat {
+        let bodyLabelWidth = NotificationViewController.Constants.notificationViewWidth - NotificationView.Constants.bodyLabelHorizontalPadding * 2
+        return Utils.getTextHeight(for: Utils.attributedString(for: body), withConstrainedWidth: bodyLabelWidth)
     }
     
     var totalHeight: CGFloat {
-        let bottomPortionViewHeight = NotificationView.Constants.bodyTextViewTopPadding + bodyTextViewHeight + NotificationView.Constants.ctaButtonTopPadding + NotificationView.Constants.ctaButtonHeight + NotificationView.Constants.ctaButtonBottomPadding
+        let bottomPortionViewHeight = NotificationView.Constants.bodyLabelTopPadding + bodyLabelHeight + NotificationView.Constants.ctaButtonTopPadding + NotificationView.Constants.ctaButtonHeight + NotificationView.Constants.ctaButtonBottomPadding
         return topPortionViewHeight + bottomPortionViewHeight
     }
 

@@ -17,7 +17,7 @@ class NotificationView: UIView {
     private let dismissButton = UIButton()
     private let visualImageView = UIImageView()
     private let subjectLabel = UILabel()
-    private let bodyTextView = UILabel()
+    private let bodyLabel = UILabel()
     private let ctaButton = UIButton()
 
     /// Constants
@@ -35,8 +35,8 @@ class NotificationView: UIView {
         static let subjectLabelHeight: CGFloat = 31
         static let imageViewLength: CGFloat = 80
         static let imageViewVerticalPadding: CGFloat = 16
-        static let bodyTextViewTopPadding: CGFloat = 24
-        static let bodyTextViewHorizontalPadding: CGFloat = 16
+        static let bodyLabelTopPadding: CGFloat = 24
+        static let bodyLabelHorizontalPadding: CGFloat = 16
         static let ctaButtonTopPadding: CGFloat = 16
         static let ctaButtonHorizontalPadding: CGFloat = 24
         static let ctaButtonHeight: CGFloat = 38
@@ -72,10 +72,10 @@ class NotificationView: UIView {
             addSubview(visualImageView)
         }
 
-        bodyTextView.numberOfLines = 0
-        bodyTextView.backgroundColor = .clear
-        bodyTextView.attributedText = Utils.attributedString(for: announcement.body)
-        addSubview(bodyTextView)
+        bodyLabel.numberOfLines = 0
+        bodyLabel.backgroundColor = .clear
+        bodyLabel.attributedText = Utils.attributedString(for: announcement.body)
+        addSubview(bodyLabel)
 
         ctaButton.setTitle(announcement.ctaText, for: .normal)
         ctaButton.setTitleColor(.white, for: .normal)
@@ -118,14 +118,14 @@ class NotificationView: UIView {
             }
         }
 
-        bodyTextView.snp.makeConstraints { make in
-            make.top.equalTo(bottomPortionView).inset(Constants.bodyTextViewTopPadding)
-            make.leading.trailing.equalTo(bottomPortionView).inset(Constants.bodyTextViewHorizontalPadding)
-            make.height.equalTo(announcement.bodyTextViewHeight)
+        bodyLabel.snp.makeConstraints { make in
+            make.top.equalTo(bottomPortionView).inset(Constants.bodyLabelTopPadding)
+            make.leading.trailing.equalTo(bottomPortionView).inset(Constants.bodyLabelHorizontalPadding)
+            make.height.equalTo(announcement.bodyLabelHeight)
         }
 
         ctaButton.snp.makeConstraints { make in
-            make.top.equalTo(bodyTextView.snp.bottom).offset(Constants.ctaButtonTopPadding)
+            make.top.equalTo(bodyLabel.snp.bottom).offset(Constants.ctaButtonTopPadding)
             make.leading.trailing.equalToSuperview().inset(Constants.ctaButtonHorizontalPadding)
             make.height.equalTo(Constants.ctaButtonHeight)
         }
