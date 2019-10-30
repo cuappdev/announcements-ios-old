@@ -19,25 +19,10 @@ struct Announcement: Codable {
     /// The main text of the notification
     let body : String
 
-    /// CTA - Call To Action
+    /// The text on the call to action (CTA) button
     let ctaText : String
 
     /// The only action currently supported: visiting a URL
     let ctaAction : String
-
-    var topPortionViewHeight: CGFloat {
-        imageUrl == nil ? NotificationView.Constants.baseTopPortionViewHeight
-        : NotificationView.Constants.baseTopPortionViewHeight + NotificationView.Constants.extraImageHeight
-    }
-
-    var bodyLabelHeight: CGFloat {
-        let bodyLabelWidth = NotificationViewController.Constants.notificationViewWidth - NotificationView.Constants.bodyLabelHorizontalPadding * 2
-        return Utils.getTextHeight(for: Utils.attributedString(for: body), withConstrainedWidth: bodyLabelWidth)
-    }
-    
-    var totalHeight: CGFloat {
-        let bottomPortionViewHeight = NotificationView.Constants.bodyLabelTopPadding + bodyLabelHeight + NotificationView.Constants.ctaButtonTopPadding + NotificationView.Constants.ctaButtonHeight + NotificationView.Constants.ctaButtonBottomPadding
-        return topPortionViewHeight + bottomPortionViewHeight
-    }
 
 }

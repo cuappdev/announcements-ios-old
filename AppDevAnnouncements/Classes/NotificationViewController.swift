@@ -19,10 +19,6 @@ class NotificationViewController: UIViewController {
     private var announcement: Announcement
     private weak var delegate : NotificationDelegate?
 
-    enum Constants {
-        static let notificationViewWidth: CGFloat = 327
-    }
-
     init(announcement: Announcement, delegate: NotificationDelegate) {
         self.announcement = announcement
         self.delegate = delegate
@@ -42,11 +38,16 @@ class NotificationViewController: UIViewController {
         presentNotification()
     }
 
+    enum Constants {
+        static let notificationViewWidth: CGFloat = 327
+    }
+
     private func setupConstraints() {
+        let viewConstants = NotificationView.Constants(announcement: announcement)
 
         notificationView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.height.equalTo(announcement.totalHeight)
+            make.height.equalTo(viewConstants.totalHeight)
             make.width.equalTo(Constants.notificationViewWidth)
         }
     }
