@@ -24,5 +24,20 @@ struct Announcement: Codable {
 
     /// The only action currently supported: visiting a URL
     let ctaAction : String
+
+    var topPortionViewHeight: CGFloat {
+        imageUrl == nil ? NotificationView.Constants.baseTopPortionViewHeight
+        : NotificationView.Constants.baseTopPortionViewHeight + NotificationView.Constants.extraImageHeight
+    }
+
+    var bodyTextViewHeight: CGFloat {
+        let bodyTextViewWidth = NotificationViewController.Constants.notificationViewWidth - NotificationView.Constants.bodyTextViewHorizontalPadding * 2
+        return Utils.getTextHeight(for: Utils.attributedString(for: body), withConstrainedWidth: bodyTextViewWidth)
+    }
     
+    var totalHeight: CGFloat {
+        let bottomPortionViewHeight = NotificationView.Constants.bodyTextViewTopPadding + bodyTextViewHeight + NotificationView.Constants.ctaButtonTopPadding + NotificationView.Constants.ctaButtonHeight + NotificationView.Constants.ctaButtonBottomPadding
+        return topPortionViewHeight + bottomPortionViewHeight
+    }
+
 }

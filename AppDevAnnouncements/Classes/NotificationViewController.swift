@@ -16,57 +16,47 @@ class NotificationViewController: UIViewController {
 
     private var notificationView: NotificationView!
 
-    private var imageUrl : String?
-    private var subject : String!
-    private var body : String!
-    private var ctaText : String!
-    private var ctaAction : String!
-    private var delegate : NotificationDelegate!
+    private var announcement: Announcement
+    private weak var delegate : NotificationDelegate?
 
-    init(
-        imageUrl: String?,
-        subject: String,
-        body: String,
-        ctaText: String,
-        ctaAction: String,
-        delegate: NotificationDelegate
-    ) {
-        super.init(nibName: nil, bundle: nil)
-        self.imageUrl = imageUrl
-        self.subject = subject
-        self.body = body
-        self.ctaText = ctaText
-        self.ctaAction = ctaAction
+    enum Constants {
+        static let notificationViewWidth: CGFloat = 327
+    }
+
+    init(announcement: Announcement, delegate: NotificationDelegate) {
+        self.announcement = announcement
         self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
 
-        notificationView = NotificationView(dismissFunc: #selector(dismissNotification), imageUrl: imageUrl, subject: subject, body: body, ctaText: ctaText, actionFunc: #selector(performCTA), target: self)
+        notificationView = NotificationView(announcement: announcement, dismissFunc: #selector(dismissNotification), actionFunc: #selector(performCTA), target: self)
         notificationView.layer.cornerRadius = 10
         notificationView.clipsToBounds = true
         view.addSubview(notificationView)
-        
+
         setupConstraints()
         presentNotification()
     }
-    
+
     private func setupConstraints() {
+
         notificationView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.height.equalTo(imageUrl != nil ? 345 : 244)
-            make.width.equalTo(327)
+            make.center.equalToSuperview()
+            make.height.equalTo(announcement.totalHeight)
+            make.width.equalTo(Constants.notificationViewWidth)
         }
     }
 
     private func presentNotification() {
         // TODO: Add backend logic later on
         modalPresentationStyle = .overFullScreen
-        delegate.present(self)
+        delegate?.present(self)
     }
-    
+
     @objc private func dismissNotification() {
         dismiss(animated: true, completion: nil)
     }
@@ -74,7 +64,7 @@ class NotificationViewController: UIViewController {
     /// Executes the CTA. The currently supported CTAs are:
     /// - URLs
     @objc private func performCTA() {
-        let url = URL(string: ctaAction)!
+        guard let url = URL(string: announcement.ctaAction) else { return }
         UIApplication.shared.open(url)
     }
 
