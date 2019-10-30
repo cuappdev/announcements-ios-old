@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class NotificationView: UIView {
+internal class NotificationView: UIView {
 
     /// Components
     private let topPortionView = UIView()
@@ -19,8 +19,20 @@ class NotificationView: UIView {
     private let subjectLabel = UILabel()
     private let bodyLabel = UILabel()
     private let ctaButton = UIButton()
+
+    /// Constants
+    internal enum Constants {
+        static let notificationViewWidth: CGFloat = 327
+        static let baseTopPortionViewHeight: CGFloat = 74
+        static let extraImageHeight: CGFloat = 97
+        static let bodyLabelTopPadding: CGFloat = 24
+        static let bodyLabelHorizontalPadding: CGFloat = 16
+        static let ctaButtonTopPadding: CGFloat = 16
+        static let ctaButtonHeight: CGFloat = 38
+        static let ctaButtonBottomPadding: CGFloat = 16
+    }
     
-    init(
+    internal init(
         announcement: Announcement,
         dismissFunc: Selector,
         actionFunc: Selector,
@@ -65,14 +77,11 @@ class NotificationView: UIView {
         ctaButton.layer.cornerRadius = 5
         addSubview(ctaButton)
 
-
         setupConstraints(announcement)
     }
 
-    struct Constants {
-        let announcement : Announcement
-        let baseTopPortionViewHeight: CGFloat = 74
-        let extraImageHeight: CGFloat = 97
+    private func setupConstraints(_ announcement: Announcement) {
+
         let dismissButtonPadding: CGFloat = 12
         let dismissButtonLength: CGFloat = 12
         let subjectLabelTopPadding: CGFloat = 32
@@ -80,32 +89,11 @@ class NotificationView: UIView {
         let subjectLabelHeight: CGFloat = 31
         let imageViewLength: CGFloat = 80
         let imageViewVerticalPadding: CGFloat = 16
-        let bodyLabelTopPadding: CGFloat = 24
-        let bodyLabelHorizontalPadding: CGFloat = 16
-        let ctaButtonTopPadding: CGFloat = 16
         let ctaButtonHorizontalPadding: CGFloat = 24
-        let ctaButtonHeight: CGFloat = 38
-        let ctaButtonBottomPadding: CGFloat = 16
-        var topPortionViewHeight: CGFloat {
-            announcement.imageUrl == nil ? baseTopPortionViewHeight: baseTopPortionViewHeight + extraImageHeight
-        }
-        var bodyLabelHeight: CGFloat {
-            let bodyLabelWidth = NotificationViewController.Constants.notificationViewWidth - bodyLabelHorizontalPadding * 2
-            return Utils.getTextHeight(for: Utils.attributedString(for: announcement.body), withConstrainedWidth: bodyLabelWidth)
-        }
-        var totalHeight: CGFloat {
-            let bottomPortionViewHeight =  bodyLabelTopPadding + bodyLabelHeight + ctaButtonTopPadding + ctaButtonHeight + ctaButtonBottomPadding
-            return topPortionViewHeight + bottomPortionViewHeight
-        }
-    }
-
-    private func setupConstraints(_ announcement: Announcement) {
-
-        let constants = Constants(announcement: announcement)
 
         topPortionView.snp.makeConstraints { make in
             make.top.leading.trailing.width.equalToSuperview()
-            make.height.equalTo(constants.topPortionViewHeight)
+            make.height.equalTo(topPortionViewHeight(announcement))
         }
 
         bottomPortionView.snp.makeConstraints { make in
@@ -114,35 +102,49 @@ class NotificationView: UIView {
         }
 
         dismissButton.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(constants.dismissButtonPadding)
-            make.width.height.equalTo(constants.dismissButtonLength)
+            make.top.leading.equalToSuperview().inset(dismissButtonPadding)
+            make.width.height.equalTo(dismissButtonLength)
         }
 
         subjectLabel.snp.makeConstraints { make in
-            make.top.equalTo(topPortionView).inset(constants.subjectLabelTopPadding)
-            make.leading.trailing.equalTo(topPortionView).inset(constants.subjectLabelHorizontalPadding)
-            make.height.equalTo(constants.subjectLabelHeight)
+            make.top.equalTo(topPortionView).inset(subjectLabelTopPadding)
+            make.leading.trailing.equalTo(topPortionView).inset(subjectLabelHorizontalPadding)
+            make.height.equalTo(subjectLabelHeight)
         }
 
         if (announcement.imageUrl != nil){
             visualImageView.snp.makeConstraints { make in
-                make.top.equalTo(subjectLabel.snp.bottom).offset(constants.imageViewVerticalPadding)
+                make.top.equalTo(subjectLabel.snp.bottom).offset(imageViewVerticalPadding)
                 make.centerX.equalToSuperview()
-                make.width.height.equalTo(constants.imageViewLength)
+                make.width.height.equalTo(imageViewLength)
             }
         }
 
         bodyLabel.snp.makeConstraints { make in
-            make.top.equalTo(bottomPortionView).inset(constants.bodyLabelTopPadding)
-            make.leading.trailing.equalTo(bottomPortionView).inset(constants.bodyLabelHorizontalPadding)
-            make.height.equalTo(constants.bodyLabelHeight)
+            make.top.equalTo(bottomPortionView).inset(Constants.bodyLabelTopPadding)
+            make.leading.trailing.equalTo(bottomPortionView).inset(Constants.bodyLabelHorizontalPadding)
+            make.height.equalTo(bodyLabelHeight(announcement))
         }
 
         ctaButton.snp.makeConstraints { make in
-            make.top.equalTo(bodyLabel.snp.bottom).offset(constants.ctaButtonTopPadding)
-            make.leading.trailing.equalToSuperview().inset(constants.ctaButtonHorizontalPadding)
-            make.height.equalTo(constants.ctaButtonHeight)
+            make.top.equalTo(bodyLabel.snp.bottom).offset(Constants.ctaButtonTopPadding)
+            make.leading.trailing.equalToSuperview().inset(ctaButtonHorizontalPadding)
+            make.height.equalTo(Constants.ctaButtonHeight)
         }
+    }
+
+    private func topPortionViewHeight(_ announcement: Announcement) -> CGFloat {
+        return announcement.imageUrl == nil ? Constants.baseTopPortionViewHeight: Constants.baseTopPortionViewHeight + Constants.extraImageHeight
+    }
+
+    private func bodyLabelHeight(_ announcement: Announcement) -> CGFloat {
+        let bodyLabelWidth = Constants.notificationViewWidth - Constants.bodyLabelHorizontalPadding * 2
+        return Utils.getTextHeight(for: Utils.attributedString(for: announcement.body), withConstrainedWidth: bodyLabelWidth)
+    }
+
+    internal func getTotalHeight(_ announcement: Announcement) -> CGFloat {
+        let bottomPortionViewHeight =  Constants.bodyLabelTopPadding + bodyLabelHeight(announcement) + Constants.ctaButtonTopPadding + Constants.ctaButtonHeight + Constants.ctaButtonBottomPadding
+        return topPortionViewHeight(announcement) + bottomPortionViewHeight
     }
 
     required init?(coder: NSCoder) {

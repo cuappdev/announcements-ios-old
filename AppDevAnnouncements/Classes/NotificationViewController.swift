@@ -8,24 +8,26 @@
 
 import UIKit
 
-protocol NotificationDelegate: class {
+public protocol NotificationDelegate: class {
     func present(_ notificationViewController: NotificationViewController)
 }
 
-class NotificationViewController: UIViewController {
+public class NotificationViewController: UIViewController {
 
+    /// Components
     private var notificationView: NotificationView!
 
+    /// Initializer variables
     private var announcement: Announcement
     private weak var delegate : NotificationDelegate?
 
-    init(announcement: Announcement, delegate: NotificationDelegate) {
+    public init(announcement: Announcement, delegate: NotificationDelegate) {
         self.announcement = announcement
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
 
@@ -38,17 +40,11 @@ class NotificationViewController: UIViewController {
         presentNotification()
     }
 
-    enum Constants {
-        static let notificationViewWidth: CGFloat = 327
-    }
-
     private func setupConstraints() {
-        let viewConstants = NotificationView.Constants(announcement: announcement)
-
         notificationView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.height.equalTo(viewConstants.totalHeight)
-            make.width.equalTo(Constants.notificationViewWidth)
+            make.height.equalTo(notificationView.getTotalHeight(announcement))
+            make.width.equalTo(NotificationView.Constants.notificationViewWidth)
         }
     }
 

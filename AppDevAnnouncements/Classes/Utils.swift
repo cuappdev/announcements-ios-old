@@ -10,14 +10,14 @@ import UIKit
 
 class Utils {
 
-    public static func getTextHeight(for attributedString: NSAttributedString, withConstrainedWidth width: CGFloat) -> CGFloat {
+    internal static func getTextHeight(for attributedString: NSAttributedString, withConstrainedWidth width: CGFloat) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = attributedString.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin,  context: nil)
 
         return ceil(boundingBox.height)
     }
 
-    public static func attributedString(for string: String) -> NSAttributedString {
+    internal static func attributedString(for string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         let bodyAttributes = [
