@@ -8,21 +8,21 @@
 
 import UIKit
 
-struct Announcement: Codable {
+public struct Announcement: Codable {
 
     /// The URL of the image
-    let imageUrl : String?
+    let imageUrl: String?
 
     /// The header title of the notification
-    let subject : String
+    let subject: String
 
     /// The main text of the notification
-    let body : String
+    let body: String
 
-    /// CTA - Call To Action
-    let ctaText : String
+    /// The text on the call to action (CTA) button
+    let ctaText: String
 
     /// The only action currently supported: visiting a URL
-    let ctaAction : String
-    
+    let ctaAction: String
+
 }
