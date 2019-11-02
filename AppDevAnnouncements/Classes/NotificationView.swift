@@ -81,7 +81,6 @@ internal class NotificationView: UIView {
     }
 
     private func setupConstraints(_ announcement: Announcement) {
-
         let dismissButtonPadding: CGFloat = 12
         let dismissButtonLength: CGFloat = 12
         let subjectLabelTopPadding: CGFloat = 32
@@ -134,7 +133,9 @@ internal class NotificationView: UIView {
     }
 
     private func topPortionViewHeight(_ announcement: Announcement) -> CGFloat {
-        return announcement.imageUrl == nil ? Constants.baseTopPortionViewHeight: Constants.baseTopPortionViewHeight + Constants.extraImageHeight
+        return announcement.imageUrl == nil
+            ? Constants.baseTopPortionViewHeight
+            : Constants.baseTopPortionViewHeight + Constants.extraImageHeight
     }
 
     private func bodyLabelHeight(_ announcement: Announcement) -> CGFloat {
