@@ -8,26 +8,21 @@
 
 import UIKit
 
-public protocol NotificationDelegate: class {
-    func present(_ notificationViewController: NotificationViewController)
-}
-
-public class NotificationViewController: UIViewController {
+fileprivate class NotificationViewController: UIViewController {
 
     /// Components
     private var notificationView: NotificationView!
 
     /// Initializer variables
     private var announcement: Announcement
-    private weak var delegate : NotificationDelegate?
 
-    public init(announcement: Announcement, delegate: NotificationDelegate) {
+    fileprivate init(announcement: Announcement) {
         self.announcement = announcement
-        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .overFullScreen // Will eventually be changed to a custom presentation animation
     }
 
-    override public func viewDidLoad() {
+    override fileprivate func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
 
@@ -37,7 +32,6 @@ public class NotificationViewController: UIViewController {
         view.addSubview(notificationView)
 
         setupConstraints()
-        presentNotification()
     }
 
     private func setupConstraints() {
@@ -46,12 +40,6 @@ public class NotificationViewController: UIViewController {
             make.height.equalTo(notificationView.getTotalHeight(announcement))
             make.width.equalTo(NotificationView.Constants.notificationViewWidth)
         }
-    }
-
-    private func presentNotification() {
-        // TODO: Add backend logic later on
-        modalPresentationStyle = .overFullScreen
-        delegate?.present(self)
     }
 
     @objc private func dismissNotification() {
@@ -69,4 +57,11 @@ public class NotificationViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+}
+
+public extension UIViewController {
+    func presentNotification(announcement: Announcement) {
+        let notification = NotificationViewController(announcement: announcement)
+        present(notification, animated: true)
+    }
 }
