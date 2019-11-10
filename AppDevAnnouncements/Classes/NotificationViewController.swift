@@ -11,18 +11,18 @@ import UIKit
 fileprivate class NotificationViewController: UIViewController {
 
     /// Components
-    private var notificationView: NotificationView!
+    var notificationView: NotificationView!
 
     /// Initializer variables
-    private var announcement: Announcement
+    var announcement: Announcement
 
-    fileprivate init(announcement: Announcement) {
+    init(announcement: Announcement) {
         self.announcement = announcement
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .overFullScreen // Will eventually be changed to a custom presentation animation
     }
 
-    override fileprivate func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
 
@@ -34,7 +34,7 @@ fileprivate class NotificationViewController: UIViewController {
         setupConstraints()
     }
 
-    private func setupConstraints() {
+    func setupConstraints() {
         notificationView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.height.equalTo(notificationView.getTotalHeight(announcement))
@@ -42,13 +42,13 @@ fileprivate class NotificationViewController: UIViewController {
         }
     }
 
-    @objc private func dismissNotification() {
+    @objc func dismissNotification() {
         dismiss(animated: true, completion: nil)
     }
 
     /// Executes the CTA. The currently supported CTAs are:
     /// - URLs
-    @objc private func performCTA() {
+    @objc func performCTA() {
         guard let url = URL(string: announcement.ctaAction) else { return }
         UIApplication.shared.open(url)
     }
@@ -58,6 +58,8 @@ fileprivate class NotificationViewController: UIViewController {
     }
 
 }
+
+// MARK: - UIViewController+Extension for notification presentation
 
 public extension UIViewController {
     func presentNotification(announcement: Announcement) {
