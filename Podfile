@@ -7,5 +7,5 @@ target 'AppDevAnnouncements' do
 
   # Pods for AppDevAnnouncements
   pod 'SnapKit'
-
+  pod 'FutureNova', :git => 'https://github.com/cuappdev/ios-networking.git'
 end
