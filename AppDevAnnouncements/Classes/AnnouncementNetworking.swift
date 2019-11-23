@@ -52,8 +52,8 @@ public class AnnouncementNetworking {
 
 internal extension UIImageView {
 
-    func loadFrom(photoUrl: String, completion: ((Bool) -> Void)?) {
-        guard let url = URL(string: photoUrl) else {
+    func loadFrom(url: String, completion: ((Bool) -> Void)?) {
+        guard let url = URL(string: url) else {
             completion?(false)
             return
         }
