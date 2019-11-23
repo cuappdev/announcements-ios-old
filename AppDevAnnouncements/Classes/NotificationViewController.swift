@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate class NotificationViewController: UIViewController {
+internal class NotificationViewController: UIViewController {
 
     /// Components
     var notificationView: NotificationView!
@@ -62,8 +62,17 @@ fileprivate class NotificationViewController: UIViewController {
 // MARK: - UIViewController+Extension for notification presentation
 
 public extension UIViewController {
-    func presentNotification(announcement: Announcement) {
-        let notification = NotificationViewController(announcement: announcement)
-        present(notification, animated: true)
+    func presentAnnouncement(completion: @escaping (Bool) -> Void) {
+        AnnouncementNetworking.retrieveAnnouncement { announcement in
+            if let unwrappedAnnouncement = announcement  {
+                let notification = NotificationViewController(announcement: unwrappedAnnouncement)
+                DispatchQueue.main.async {
+                    self.present(notification, animated: true)
+                }
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
     }
 }

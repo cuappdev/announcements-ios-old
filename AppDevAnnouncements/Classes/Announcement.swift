@@ -29,5 +29,5 @@ public struct Announcement: Codable {
 
 internal struct Response: Codable {
     var success: Bool
-    var data: Announcement
+    var data: [Announcement]
 }

@@ -61,7 +61,7 @@ internal class NotificationView: UIView {
 
         if let unwrappedUrl = announcement.imageUrl {
             visualImageView.contentMode = .scaleAspectFit
-            visualImageView.image = UIImage(named: unwrappedUrl)
+            visualImageView.loadFromURL(photoUrl: unwrappedUrl)
             addSubview(visualImageView)
         }
 

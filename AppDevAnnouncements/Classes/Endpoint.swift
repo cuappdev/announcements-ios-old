@@ -13,7 +13,6 @@ extension Endpoint {
 
     static func setupEndpointConfig(_ scheme: String, _ host: String, _ commonPath: String) {
         Endpoint.config.scheme = scheme
-        //Endpoint.config.port =
         Endpoint.config.host = host
         Endpoint.config.commonPath = commonPath
     }
