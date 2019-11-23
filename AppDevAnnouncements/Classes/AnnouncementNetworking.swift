@@ -25,7 +25,6 @@ public class AnnouncementNetworking {
         } else {
             self.isConfigSetup = false
         }
-
     }
 
     static private func getAnnouncement() -> Future<Response> {
@@ -52,25 +51,24 @@ public class AnnouncementNetworking {
 }
 
 internal extension UIImageView {
-    func loadFromURL(photoUrl: String, completion: @escaping ((Bool) -> Void) = {_ in}) {
-        guard let url = URL(string: photoUrl) else {completion(false); return}
-        let request = URLRequest(url: url)
-        let session = URLSession.shared
-        var successful = false
-        let datatask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if let error = error {
-                print(error.localizedDescription as Any)
-            }
-            if let data = data {
-            DispatchQueue.main.async() {
-                self.image = UIImage(data: data)
-                successful = true
-                }
-            } else {
-                successful = false
-            }
-            completion(successful)
+
+    func loadFrom(photoUrl: String, completion: ((Bool) -> Void)?) {
+        guard let url = URL(string: photoUrl) else {
+            completion?(false)
+            return
         }
-        datatask.resume()
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let unwrappedData = data {
+            DispatchQueue.main.async() { self.image = UIImage(data: unwrappedData) }
+                completion?(true)
+            } else if let unwrappedError = error {
+                print(unwrappedError.localizedDescription)
+                completion?(false)
+            } else {
+                completion?(false)
+            }
+        }.resume()
     }
+
 }

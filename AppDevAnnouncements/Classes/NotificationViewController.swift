@@ -62,6 +62,7 @@ internal class NotificationViewController: UIViewController {
 // MARK: - UIViewController+Extension for notification presentation
 
 public extension UIViewController {
+
     func presentAnnouncement(completion: @escaping (Bool) -> Void) {
         AnnouncementNetworking.retrieveAnnouncement { announcement in
             if let unwrappedAnnouncement = announcement  {
@@ -75,4 +76,5 @@ public extension UIViewController {
             }
         }
     }
+    
 }
