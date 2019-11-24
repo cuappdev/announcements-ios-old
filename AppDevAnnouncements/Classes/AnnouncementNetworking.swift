@@ -11,14 +11,14 @@ import FutureNova
 
 public class AnnouncementNetworking {
 
-    static private var announcementPath: String?
+    static private var announcementPath: String = ""
 
     static private var isConfigSetup: Bool = false
 
     static private let networking: Networking = URLSession.shared.request
     
     static public func setupConfig(scheme: String, host: String, commonPath: String, announcementPath: String) {
-        if(scheme != "" && host != "" && commonPath != "" && announcementPath != "") {
+        if(!scheme.isEmpty && !host.isEmpty && !commonPath.isEmpty && !announcementPath.isEmpty) {
             Endpoint.setupEndpointConfig(scheme, host, commonPath)
             self.announcementPath = announcementPath
             self.isConfigSetup = true
@@ -28,7 +28,7 @@ public class AnnouncementNetworking {
     }
 
     static private func getAnnouncement() -> Future<Response> {
-        return networking(Endpoint.getAnnouncement(announcementPath!)).decode()
+        return networking(Endpoint.getAnnouncement(announcementPath)).decode()
     }
 
     static internal func retrieveAnnouncement(completion: @escaping ((Announcement?) -> Void)) {
@@ -36,8 +36,10 @@ public class AnnouncementNetworking {
             getAnnouncement().observe { result in
                 switch result {
                 case .value(let resp):
-                    let ref = resp.data[0]
-                    let announcement = Announcement(imageUrl: ref.imageUrl, subject: ref.subject, body: ref.body, ctaText: ref.ctaText, ctaAction: ref.ctaAction)
+                    var announcement : Announcement?
+                    if let announcementData = resp.data.first{
+                        announcement = Announcement(imageUrl: announcementData.imageUrl, subject: announcementData.subject, body: announcementData.body, ctaText: announcementData.ctaText, ctaAction: announcementData.ctaAction)
+                    }
                     completion(announcement)
                 case .error(let error):
                     print(error.localizedDescription)
