@@ -26,3 +26,11 @@ public struct Announcement: Codable {
     let ctaAction: String
 
 }
+
+internal struct Response: Codable {
+
+    let success: Bool
+
+    let data: [Announcement]
+    
+}
