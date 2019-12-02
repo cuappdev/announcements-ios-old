@@ -11,7 +11,7 @@ import FutureNova
 
 public class AnnouncementNetworking {
 
-    static private var announcementPath: String = ""
+    static private var announcementPath: String?
 
     static private var isConfigSetup: Bool = false
 
@@ -27,13 +27,15 @@ public class AnnouncementNetworking {
         }
     }
 
-    static private func getAnnouncement() -> Future<Response> {
-        return networking(Endpoint.getAnnouncement(announcementPath)).decode()
+    static private func getAnnouncement() -> Future<Response>? {
+        guard let unwrappedPath = announcementPath else { return nil }
+        return networking(Endpoint.getAnnouncement(unwrappedPath)).decode()
     }
 
     static internal func retrieveAnnouncement(completion: @escaping ((Announcement?) -> Void)) {
         if isConfigSetup {
-            getAnnouncement().observe { result in
+            guard let someAnnouncement = getAnnouncement() else { return }
+            someAnnouncement.observe { result in
                 switch result {
                 case .value(let resp):
                     var announcement : Announcement?
