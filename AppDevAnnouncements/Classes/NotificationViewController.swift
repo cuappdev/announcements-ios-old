@@ -19,7 +19,15 @@ internal class NotificationViewController: UIViewController {
     init(announcement: Announcement) {
         self.announcement = announcement
         super.init(nibName: nil, bundle: nil)
-        self.modalPresentationStyle = .overFullScreen // Will eventually be changed to a custom presentation animation
+        self.modalPresentationStyle = .overFullScreen
+    }
+
+    /// Fade in animation
+    override func viewWillAppear(_ animated: Bool) {
+        notificationView.alpha = 0
+        UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseOut, animations: {
+            self.notificationView.alpha = 1
+        }, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -43,7 +51,7 @@ internal class NotificationViewController: UIViewController {
     }
 
     @objc func dismissNotification() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
 
     /// Executes the CTA. The currently supported CTAs are:
@@ -66,9 +74,9 @@ public extension UIViewController {
     func presentAnnouncement(completion: @escaping (Bool) -> Void) {
         AnnouncementNetworking.retrieveAnnouncement { announcement in
             if let unwrappedAnnouncement = announcement  {
-                let notification = NotificationViewController(announcement: unwrappedAnnouncement)
                 DispatchQueue.main.async {
-                    self.present(notification, animated: true)
+                    let notification = NotificationViewController(announcement: unwrappedAnnouncement)
+                    self.present(notification, animated: false)
                 }
                 completion(true)
             } else {
