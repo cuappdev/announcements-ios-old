@@ -25,6 +25,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
+  Custom Notification
                    DESC
 
   spec.homepage     = "http://EXAMPLE/AppDevAnnouncements"
@@ -38,7 +39,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT (example)"
+  spec.license      = "MIT"
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -52,10 +53,10 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "Kevin Chan" => "kevinchan159@gmail.com" }
-  # Or just: spec.author    = "Kevin Chan"
-  # spec.authors            = { "Kevin Chan" => "kevinchan159@gmail.com" }
-  # spec.social_media_url   = "https://twitter.com/Kevin Chan"
+  spec.author             = { "Cornell AppDev" => "cornellappdev@gmail.com" }
+  # Or just: spec.author    = "Cornell AppDev"
+  # spec.authors            = { "Cornell AppDev" => "cornellappdev@gmail.com" }
+  # spec.social_media_url   = "https://twitter.com/Cornell AppDev"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -79,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://EXAMPLE/AppDevAnnouncements.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/cuappdev/appdev-announcements.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
