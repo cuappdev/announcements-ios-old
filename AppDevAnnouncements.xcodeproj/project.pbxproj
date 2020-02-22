@@ -12,7 +12,6 @@
 		87ED7F74235EE12700AE3546 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F70235EE12700AE3546 /* Announcement.swift */; };
 		87ED7F76235EE12700AE3546 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F72235EE12700AE3546 /* NotificationViewController.swift */; };
 		87F8EFB5236E2931002C4755 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F8EFB4236E2931002C4755 /* Utils.swift */; };
-		9A42111139AE106516E3C59E /* Pods_AppDevAnnouncements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EE955926B7E6847AB6C30F /* Pods_AppDevAnnouncements.framework */; };
 		C28AAC0E235ED9FF00A0FC09 /* AppDevAnnouncements.h in Headers */ = {isa = PBXBuildFile; fileRef = C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -22,12 +21,9 @@
 		87ED7F70235EE12700AE3546 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		87ED7F72235EE12700AE3546 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		87F8EFB4236E2931002C4755 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		AA3C75F60883F053FEDC971B /* Pods-AppDevAnnouncements.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDevAnnouncements.debug.xcconfig"; path = "Target Support Files/Pods-AppDevAnnouncements/Pods-AppDevAnnouncements.debug.xcconfig"; sourceTree = "<group>"; };
 		C28AAC09235ED9FF00A0FC09 /* AppDevAnnouncements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppDevAnnouncements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDevAnnouncements.h; sourceTree = "<group>"; };
 		C28AAC0D235ED9FF00A0FC09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E75B3E23C4F42BE36A6E2C78 /* Pods-AppDevAnnouncements.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDevAnnouncements.release.xcconfig"; path = "Target Support Files/Pods-AppDevAnnouncements/Pods-AppDevAnnouncements.release.xcconfig"; sourceTree = "<group>"; };
-		F1EE955926B7E6847AB6C30F /* Pods_AppDevAnnouncements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppDevAnnouncements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A42111139AE106516E3C59E /* Pods_AppDevAnnouncements.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,8 +40,6 @@
 		3117B8214120268A3076BB3B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AA3C75F60883F053FEDC971B /* Pods-AppDevAnnouncements.debug.xcconfig */,
-				E75B3E23C4F42BE36A6E2C78 /* Pods-AppDevAnnouncements.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -57,7 +50,6 @@
 				C28AAC0B235ED9FF00A0FC09 /* AppDevAnnouncements */,
 				C28AAC0A235ED9FF00A0FC09 /* Products */,
 				3117B8214120268A3076BB3B /* Pods */,
-				FF8A1F96B053F19A3B33F6E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,14 +83,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		FF8A1F96B053F19A3B33F6E5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F1EE955926B7E6847AB6C30F /* Pods_AppDevAnnouncements.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -117,7 +101,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C28AAC11235ED9FF00A0FC09 /* Build configuration list for PBXNativeTarget "AppDevAnnouncements" */;
 			buildPhases = (
-				AB236683E4FC93DF3D883E99 /* [CP] Check Pods Manifest.lock */,
 				C28AAC04235ED9FF00A0FC09 /* Headers */,
 				C28AAC05235ED9FF00A0FC09 /* Sources */,
 				C28AAC06235ED9FF00A0FC09 /* Frameworks */,
@@ -174,31 +157,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		AB236683E4FC93DF3D883E99 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AppDevAnnouncements-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C28AAC05235ED9FF00A0FC09 /* Sources */ = {
@@ -338,7 +296,6 @@
 		};
 		C28AAC12235ED9FF00A0FC09 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA3C75F60883F053FEDC971B /* Pods-AppDevAnnouncements.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -364,7 +321,6 @@
 		};
 		C28AAC13235ED9FF00A0FC09 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E75B3E23C4F42BE36A6E2C78 /* Pods-AppDevAnnouncements.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
