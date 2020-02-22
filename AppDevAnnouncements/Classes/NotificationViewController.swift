@@ -65,16 +65,16 @@ internal class NotificationViewController: UIViewController {
 
 public extension UIViewController {
 
-    func presentAnnouncement(completion: @escaping (Bool) -> Void) {
+    func presentAnnouncement(completion: ((Bool) -> Void)?) {
         AnnouncementNetworking.retrieveAnnouncement { announcement in
             if let unwrappedAnnouncement = announcement  {
                 DispatchQueue.main.async {
                     let notificationVC = NotificationViewController(announcement: unwrappedAnnouncement)
                     self.present(notificationVC, animated: true)
                 }
-                completion(true)
+                completion?(true)
             } else {
-                completion(false)
+                completion?(false)
             }
         }
     }
