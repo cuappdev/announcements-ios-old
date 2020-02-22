@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 internal class NotificationView: UIView {
 
@@ -90,46 +89,57 @@ internal class NotificationView: UIView {
         let imageViewVerticalPadding: CGFloat = 16
         let ctaButtonHorizontalPadding: CGFloat = 24
 
-        topPortionView.snp.makeConstraints { make in
-            make.top.leading.trailing.width.equalToSuperview()
-            make.height.equalTo(topPortionViewHeight(announcement))
-        }
+        NSLayoutConstraint.activate([
+            topPortionView.topAnchor.constraint(equalTo: topAnchor),
+            topPortionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topPortionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topPortionView.widthAnchor.constraint(equalTo: widthAnchor),
+            topPortionView.heightAnchor.constraint(equalToConstant: topPortionViewHeight(announcement))
+        ])
 
-        bottomPortionView.snp.makeConstraints { make in
-            make.top.equalTo(topPortionView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            bottomPortionView.topAnchor.constraint(equalTo: topPortionView.bottomAnchor),
+            bottomPortionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bottomPortionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomPortionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
 
-        dismissButton.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(dismissButtonPadding)
-            make.width.height.equalTo(dismissButtonLength)
-        }
+        NSLayoutConstraint.activate([
+            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: dismissButtonPadding),
+            dismissButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: dismissButtonPadding),
+            dismissButton.widthAnchor.constraint(equalToConstant: dismissButtonLength),
+            dismissButton.heightAnchor.constraint(equalToConstant: dismissButtonLength)
+        ])
 
-        subjectLabel.snp.makeConstraints { make in
-            make.top.equalTo(topPortionView).inset(subjectLabelTopPadding)
-            make.leading.trailing.equalTo(topPortionView).inset(subjectLabelHorizontalPadding)
-            make.height.equalTo(subjectLabelHeight)
-        }
+        NSLayoutConstraint.activate([
+            subjectLabel.topAnchor.constraint(equalTo: topPortionView.topAnchor, constant: subjectLabelTopPadding),
+            subjectLabel.leadingAnchor.constraint(equalTo: topPortionView.leadingAnchor, constant: subjectLabelHorizontalPadding),
+            subjectLabel.trailingAnchor.constraint(equalTo: topPortionView.trailingAnchor, constant: -subjectLabelHorizontalPadding),
+            subjectLabel.heightAnchor.constraint(equalToConstant: subjectLabelHeight)
+        ])
 
         if (announcement.imageUrl != nil){
-            visualImageView.snp.makeConstraints { make in
-                make.top.equalTo(subjectLabel.snp.bottom).offset(imageViewVerticalPadding)
-                make.centerX.equalToSuperview()
-                make.width.height.equalTo(imageViewLength)
-            }
+            NSLayoutConstraint.activate([
+                visualImageView.topAnchor.constraint(equalTo: subjectLabel.bottomAnchor, constant: imageViewVerticalPadding),
+                visualImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                visualImageView.widthAnchor.constraint(equalToConstant: imageViewLength),
+                visualImageView.heightAnchor.constraint(equalToConstant: imageViewLength)
+            ])
         }
 
-        bodyLabel.snp.makeConstraints { make in
-            make.top.equalTo(bottomPortionView).inset(Constants.bodyLabelTopPadding)
-            make.leading.trailing.equalTo(bottomPortionView).inset(Constants.bodyLabelHorizontalPadding)
-            make.height.equalTo(bodyLabelHeight(announcement))
-        }
+        NSLayoutConstraint.activate([
+            bodyLabel.topAnchor.constraint(equalTo: bottomPortionView.topAnchor, constant: Constants.bodyLabelTopPadding),
+            bodyLabel.leadingAnchor.constraint(equalTo: bottomPortionView.leadingAnchor, constant: Constants.bodyLabelHorizontalPadding),
+            bodyLabel.trailingAnchor.constraint(equalTo: bottomPortionView.trailingAnchor, constant: -Constants.bodyLabelHorizontalPadding),
+            bodyLabel.heightAnchor.constraint(equalToConstant: bodyLabelHeight(announcement))
+        ])
 
-        ctaButton.snp.makeConstraints { make in
-            make.top.equalTo(bodyLabel.snp.bottom).offset(Constants.ctaButtonTopPadding)
-            make.leading.trailing.equalToSuperview().inset(ctaButtonHorizontalPadding)
-            make.height.equalTo(Constants.ctaButtonHeight)
-        }
+        NSLayoutConstraint.activate([
+            ctaButton.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: Constants.ctaButtonTopPadding),
+            ctaButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ctaButtonHorizontalPadding),
+            ctaButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -ctaButtonHorizontalPadding),
+            ctaButton.heightAnchor.constraint(equalToConstant: Constants.ctaButtonHeight)
+        ])
     }
 
     private func topPortionViewHeight(_ announcement: Announcement) -> CGFloat {
