@@ -38,18 +38,9 @@ public class AnnouncementNetworking {
             guard let data = data else { return }
 
             let jsonDecoder = JSONDecoder()
-            var announcement : Announcement?
-            if let apiResponse = try? jsonDecoder.decode(Response<[Announcement]>.self, from: data),
-                let announcementData = apiResponse.data.first {
-                announcement = Announcement(
-                    imageUrl: announcementData.imageUrl,
-                    subject: announcementData.subject,
-                    body: announcementData.body,
-                    ctaText: announcementData.ctaText,
-                    ctaAction: announcementData.ctaAction
-                )
+            if let apiResponse = try? jsonDecoder.decode(Response<[Announcement]>.self, from: data) {
+                completion(apiResponse.data.first)
             }
-            completion(announcement)
         }.resume()
     }
 
