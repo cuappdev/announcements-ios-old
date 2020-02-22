@@ -35,11 +35,12 @@ internal class NotificationViewController: UIViewController {
     }
 
     func setupConstraints() {
-        notificationView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.height.equalTo(notificationView.getTotalHeight(announcement))
-            make.width.equalTo(NotificationView.Constants.notificationViewWidth)
-        }
+        NSLayoutConstraint.activate([
+            notificationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            notificationView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            notificationView.heightAnchor.constraint(equalToConstant: notificationView.getTotalHeight(announcement)),
+            notificationView.widthAnchor.constraint(equalToConstant: NotificationView.Constants.notificationViewWidth)
+        ])
     }
 
     @objc func dismissNotification() {
