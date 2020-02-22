@@ -43,32 +43,39 @@ internal class NotificationView: UIView {
         let lightGray = UIColor(displayP3Red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         let darkGray = UIColor(displayP3Red: 114/255, green: 114/255, blue: 114/255, alpha: 1)
 
+        topPortionView.translatesAutoresizingMaskIntoConstraints = false
         topPortionView.backgroundColor = .white
         addSubview(topPortionView)
 
+        bottomPortionView.translatesAutoresizingMaskIntoConstraints = false
         bottomPortionView.backgroundColor = lightGray
         addSubview(bottomPortionView)
 
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
         dismissButton.setImage(UIImage(named: "closeIcon"), for: .normal)
         dismissButton.addTarget(target, action: dismissFunc, for: .touchUpInside)
         addSubview(dismissButton)
 
+        subjectLabel.translatesAutoresizingMaskIntoConstraints = false
         subjectLabel.textAlignment = .center
         subjectLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         subjectLabel.text = announcement.subject
         addSubview(subjectLabel)
 
         if let unwrappedUrl = announcement.imageUrl {
+            visualImageView.translatesAutoresizingMaskIntoConstraints = false
             visualImageView.contentMode = .scaleAspectFit
             visualImageView.loadFrom(url: unwrappedUrl, completion: nil)
             addSubview(visualImageView)
         }
 
+        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
         bodyLabel.numberOfLines = 0
         bodyLabel.backgroundColor = .clear
         bodyLabel.attributedText = Utils.attributedString(for: announcement.body)
         addSubview(bodyLabel)
 
+        ctaButton.translatesAutoresizingMaskIntoConstraints = false
         ctaButton.setTitle(announcement.ctaText, for: .normal)
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.addTarget(target, action: actionFunc, for: .touchUpInside)

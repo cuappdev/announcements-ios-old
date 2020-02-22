@@ -27,6 +27,7 @@ internal class NotificationViewController: UIViewController {
         view.backgroundColor = .clear
 
         notificationView = NotificationView(announcement: announcement, dismissFunc: #selector(dismissNotification), actionFunc: #selector(performCTA), target: self)
+        notificationView.translatesAutoresizingMaskIntoConstraints = false
         notificationView.layer.cornerRadius = 10
         notificationView.clipsToBounds = true
         view.addSubview(notificationView)
