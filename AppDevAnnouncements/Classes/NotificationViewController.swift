@@ -67,9 +67,9 @@ public extension UIViewController {
     func presentAnnouncement(completion: @escaping (Bool) -> Void) {
         AnnouncementNetworking.retrieveAnnouncement { announcement in
             if let unwrappedAnnouncement = announcement  {
-                let notification = NotificationViewController(announcement: unwrappedAnnouncement)
                 DispatchQueue.main.async {
-                    self.present(notification, animated: true)
+                    let notificationVC = NotificationViewController(announcement: unwrappedAnnouncement)
+                    self.present(notificationVC, animated: true)
                 }
                 completion(true)
             } else {
