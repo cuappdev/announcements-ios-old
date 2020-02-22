@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8735A6C723812252007BDF71 /* AnnouncementNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8735A6C623812252007BDF71 /* AnnouncementNetworking.swift */; };
-		8749AA232378B26F00B12CE9 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8749AA222378B26F00B12CE9 /* Endpoint.swift */; };
 		87ED7F73235EE12700AE3546 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F6F235EE12700AE3546 /* NotificationView.swift */; };
 		87ED7F74235EE12700AE3546 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F70235EE12700AE3546 /* Announcement.swift */; };
 		87ED7F76235EE12700AE3546 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F72235EE12700AE3546 /* NotificationViewController.swift */; };
@@ -19,7 +18,6 @@
 
 /* Begin PBXFileReference section */
 		8735A6C623812252007BDF71 /* AnnouncementNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementNetworking.swift; sourceTree = "<group>"; };
-		8749AA222378B26F00B12CE9 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		87ED7F6F235EE12700AE3546 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		87ED7F70235EE12700AE3546 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		87ED7F72235EE12700AE3546 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				87ED7F70235EE12700AE3546 /* Announcement.swift */,
-				8749AA222378B26F00B12CE9 /* Endpoint.swift */,
 				8735A6C623812252007BDF71 /* AnnouncementNetworking.swift */,
 				87ED7F6F235EE12700AE3546 /* NotificationView.swift */,
 				87ED7F72235EE12700AE3546 /* NotificationViewController.swift */,
@@ -213,7 +210,6 @@
 				87ED7F76235EE12700AE3546 /* NotificationViewController.swift in Sources */,
 				87ED7F73235EE12700AE3546 /* NotificationView.swift in Sources */,
 				87F8EFB5236E2931002C4755 /* Utils.swift in Sources */,
-				8749AA232378B26F00B12CE9 /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

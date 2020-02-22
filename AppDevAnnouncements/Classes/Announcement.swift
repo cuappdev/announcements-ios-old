@@ -27,10 +27,10 @@ public struct Announcement: Codable {
 
 }
 
-internal struct Response: Codable {
+internal struct Response<T: Codable>: Codable {
 
     let success: Bool
 
-    let data: [Announcement]
+    let data: T
     
 }

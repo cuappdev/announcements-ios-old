@@ -7,49 +7,50 @@
 //
 
 import Foundation
-import FutureNova
+import UIKit
 
 public class AnnouncementNetworking {
 
-    static private var announcementPath: String?
+    static private var announcementURL: URL?
 
-    static private var isConfigSetup: Bool = false
-
-    static private let networking: Networking = URLSession.shared.request
-    
     static public func setupConfig(scheme: String, host: String, commonPath: String, announcementPath: String) {
         if(!scheme.isEmpty && !host.isEmpty && !commonPath.isEmpty && !announcementPath.isEmpty) {
-            Endpoint.setupEndpointConfig(scheme, host, commonPath)
-            self.announcementPath = announcementPath
-            self.isConfigSetup = true
-        } else {
-            self.isConfigSetup = false
+            var components = URLComponents()
+            components.scheme = scheme
+            components.host = host
+            components.path = "\(commonPath)\(announcementPath)"
+            announcementURL = components.url
         }
-    }
-
-    static private func getAnnouncement() -> Future<Response>? {
-        guard let unwrappedPath = announcementPath else { return nil }
-        return networking(Endpoint.getAnnouncement(unwrappedPath)).decode()
     }
 
     static internal func retrieveAnnouncement(completion: @escaping ((Announcement?) -> Void)) {
-        if isConfigSetup {
-            guard let someAnnouncement = getAnnouncement() else { return }
-            someAnnouncement.observe { result in
-                switch result {
-                case .value(let resp):
-                    var announcement : Announcement?
-                    if let announcementData = resp.data.first{
-                        announcement = Announcement(imageUrl: announcementData.imageUrl, subject: announcementData.subject, body: announcementData.body, ctaText: announcementData.ctaText, ctaAction: announcementData.ctaAction)
-                    }
-                    completion(announcement)
-                case .error(let error):
-                    print(error.localizedDescription)
-                }
-            }
-        } else {
+        guard let announcementURL = announcementURL else {
             print("Did not setup config properly")
+            return
         }
+
+        URLSession.shared.dataTask(with: announcementURL) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+
+            guard let data = data else { return }
+
+            let jsonDecoder = JSONDecoder()
+            var announcement : Announcement?
+            if let apiResponse = try? jsonDecoder.decode(Response<[Announcement]>.self, from: data),
+                let announcementData = apiResponse.data.first {
+                announcement = Announcement(
+                    imageUrl: announcementData.imageUrl,
+                    subject: announcementData.subject,
+                    body: announcementData.body,
+                    ctaText: announcementData.ctaText,
+                    ctaAction: announcementData.ctaAction
+                )
+            }
+            completion(announcement)
+        }.resume()
     }
 
 }
