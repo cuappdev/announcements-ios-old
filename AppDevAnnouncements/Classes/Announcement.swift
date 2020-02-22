@@ -10,6 +10,9 @@ import UIKit
 
 public struct Announcement: Codable {
 
+    /// The ID of the announcement
+    let id: Int
+
     /// The URL of the image
     let imageUrl: String?
 

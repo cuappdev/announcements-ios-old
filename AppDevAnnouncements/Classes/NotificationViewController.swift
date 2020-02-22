@@ -67,15 +67,31 @@ public extension UIViewController {
 
     func presentAnnouncement(completion: ((Bool) -> Void)?) {
         AnnouncementNetworking.retrieveAnnouncement { announcement in
-            if let unwrappedAnnouncement = announcement  {
-                DispatchQueue.main.async {
-                    let notificationVC = NotificationViewController(announcement: unwrappedAnnouncement)
-                    self.present(notificationVC, animated: true)
-                }
-                completion?(true)
-            } else {
+            guard let announcement = announcement else {
+                // Failed to fetch announcement data from server
                 completion?(false)
+                return
             }
+
+            // Check to see if user has already seen this announcement
+            let userDefaults = UserDefaults.standard
+            let presentedAnnouncementIDsKey = "presentedAnnouncementIDs"
+
+            if let announcementIDs = userDefaults.value(forKey: presentedAnnouncementIDsKey) as? [Int] {
+                if announcementIDs.contains(announcement.id) {
+                    // User has already seen this announcement
+                    completion?(true)
+                    return
+                }
+                userDefaults.set(announcementIDs + [announcement.id], forKey: presentedAnnouncementIDsKey)
+            } else {
+                userDefaults.set([announcement.id], forKey: presentedAnnouncementIDsKey)
+            }
+            DispatchQueue.main.async {
+                let notificationVC = NotificationViewController(announcement: announcement)
+                self.present(notificationVC, animated: true)
+            }
+            completion?(true)
         }
     }
     
