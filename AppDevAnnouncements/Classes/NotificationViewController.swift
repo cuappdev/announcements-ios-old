@@ -78,9 +78,11 @@ public extension UIViewController {
                 DispatchQueue.main.async {
                     let notificationVC = NotificationViewController(announcement: announcement)
                     self.present(notificationVC, animated: true)
+                    completion?(true)
                 }
+            } else {
+                completion?(false)
             }
-            completion?(true)
         }
     }
     
