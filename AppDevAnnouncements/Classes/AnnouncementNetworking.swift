@@ -23,7 +23,7 @@ public class AnnouncementNetworking {
         }
     }
 
-    static internal func retrieveAnnouncement(completion: @escaping ((Announcement?) -> Void)) {
+    static internal func retrieveAnnouncements(completion: @escaping (([Announcement]) -> Void)) {
         guard let announcementURL = announcementURL else {
             print("Did not setup config properly")
             return
@@ -39,7 +39,7 @@ public class AnnouncementNetworking {
 
             let jsonDecoder = JSONDecoder()
             if let apiResponse = try? jsonDecoder.decode(Response<[Announcement]>.self, from: data) {
-                completion(apiResponse.data.first)
+                completion(apiResponse.data)
             }
         }.resume()
     }

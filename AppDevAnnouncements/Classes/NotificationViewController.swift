@@ -66,30 +66,19 @@ internal class NotificationViewController: UIViewController {
 public extension UIViewController {
 
     func presentAnnouncement(completion: ((Bool) -> Void)?) {
-        AnnouncementNetworking.retrieveAnnouncement { announcement in
-            guard let announcement = announcement else {
-                // Failed to fetch announcement data from server
-                completion?(false)
-                return
-            }
-
-            // Check to see if user has already seen this announcement
+        AnnouncementNetworking.retrieveAnnouncements { announcements in
+            // Find first announcment that has yet to be presented to user
             let userDefaults = UserDefaults.standard
             let presentedAnnouncementIDsKey = "presentedAnnouncementIDs"
 
-            if let announcementIDs = userDefaults.value(forKey: presentedAnnouncementIDsKey) as? [Int] {
-                if announcementIDs.contains(announcement.id) {
-                    // User has already seen this announcement
-                    completion?(true)
-                    return
+            let presentedAnnouncementIDs = userDefaults.value(forKey: presentedAnnouncementIDsKey) as? [Int] ?? []
+
+            if let announcement = announcements.first(where: { !presentedAnnouncementIDs.contains($0.id) }) {
+                userDefaults.set(presentedAnnouncementIDs + [announcement.id], forKey: presentedAnnouncementIDsKey)
+                DispatchQueue.main.async {
+                    let notificationVC = NotificationViewController(announcement: announcement)
+                    self.present(notificationVC, animated: true)
                 }
-                userDefaults.set(announcementIDs + [announcement.id], forKey: presentedAnnouncementIDsKey)
-            } else {
-                userDefaults.set([announcement.id], forKey: presentedAnnouncementIDsKey)
-            }
-            DispatchQueue.main.async {
-                let notificationVC = NotificationViewController(announcement: announcement)
-                self.present(notificationVC, animated: true)
             }
             completion?(true)
         }
