@@ -52,7 +52,7 @@ internal class NotificationView: UIView {
         addSubview(bottomPortionView)
 
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
-        let podBundle = Bundle(identifier: "cornellappdev.AppDevAnnouncements")
+        let podBundle = Bundle(identifier: "org.cocoapods.AppDevAnnouncements")
         let dismissButtonImage = UIImage(named: "closeIcon", in: podBundle, compatibleWith: nil)
         dismissButton.setImage(dismissButtonImage, for: .normal)
         dismissButton.addTarget(target, action: dismissFunc, for: .touchUpInside)
