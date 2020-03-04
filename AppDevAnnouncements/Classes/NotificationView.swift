@@ -52,7 +52,8 @@ internal class NotificationView: UIView {
         addSubview(bottomPortionView)
 
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
-        dismissButton.setImage(UIImage(named: "closeIcon"), for: .normal)
+        let dismissButtonImage = UIImage(named: "closeIcon", in: Bundle(for: NotificationView.self), with: nil)
+        dismissButton.setImage(dismissButtonImage, for: .normal)
         dismissButton.addTarget(target, action: dismissFunc, for: .touchUpInside)
         addSubview(dismissButton)
 
