@@ -12,9 +12,7 @@
 		87ED7F74235EE12700AE3546 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F70235EE12700AE3546 /* Announcement.swift */; };
 		87ED7F76235EE12700AE3546 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F72235EE12700AE3546 /* NotificationViewController.swift */; };
 		87F8EFB5236E2931002C4755 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F8EFB4236E2931002C4755 /* Utils.swift */; };
-		C20B949B240F541700EE8ED5 /* closeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C20B9498240F541700EE8ED5 /* closeIcon.png */; };
-		C20B949C240F541700EE8ED5 /* closeIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C20B9499240F541700EE8ED5 /* closeIcon@3x.png */; };
-		C20B949D240F541700EE8ED5 /* closeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C20B949A240F541700EE8ED5 /* closeIcon@2x.png */; };
+		C20B94A1240F564500EE8ED5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C20B94A0240F564500EE8ED5 /* Images.xcassets */; };
 		C28AAC0E235ED9FF00A0FC09 /* AppDevAnnouncements.h in Headers */ = {isa = PBXBuildFile; fileRef = C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -24,9 +22,7 @@
 		87ED7F70235EE12700AE3546 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		87ED7F72235EE12700AE3546 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		87F8EFB4236E2931002C4755 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		C20B9498240F541700EE8ED5 /* closeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeIcon.png; sourceTree = "<group>"; };
-		C20B9499240F541700EE8ED5 /* closeIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeIcon@3x.png"; sourceTree = "<group>"; };
-		C20B949A240F541700EE8ED5 /* closeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeIcon@2x.png"; sourceTree = "<group>"; };
+		C20B94A0240F564500EE8ED5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C28AAC09235ED9FF00A0FC09 /* AppDevAnnouncements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppDevAnnouncements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDevAnnouncements.h; sourceTree = "<group>"; };
 		C28AAC0D235ED9FF00A0FC09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,9 +49,7 @@
 		C20B9492240F516E00EE8ED5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C20B9498240F541700EE8ED5 /* closeIcon.png */,
-				C20B949A240F541700EE8ED5 /* closeIcon@2x.png */,
-				C20B9499240F541700EE8ED5 /* closeIcon@3x.png */,
+				C20B94A0240F564500EE8ED5 /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -170,9 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C20B949B240F541700EE8ED5 /* closeIcon.png in Resources */,
-				C20B949C240F541700EE8ED5 /* closeIcon@3x.png in Resources */,
-				C20B949D240F541700EE8ED5 /* closeIcon@2x.png in Resources */,
+				C20B94A1240F564500EE8ED5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
