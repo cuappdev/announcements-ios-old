@@ -64,7 +64,9 @@ internal class NotificationView: UIView {
         subjectLabel.text = announcement.subject
         addSubview(subjectLabel)
 
-        if let unwrappedUrl = announcement.imageUrl {
+        if let unwrappedUrl = announcement.imageUrl,
+            announcement.imageHeight != nil,
+            announcement.imageWidth != nil {
             visualImageView.translatesAutoresizingMaskIntoConstraints = false
             visualImageView.contentMode = .scaleAspectFit
             visualImageView.loadFrom(url: unwrappedUrl, completion: nil)
@@ -83,6 +85,11 @@ internal class NotificationView: UIView {
         ctaButton.addTarget(target, action: actionFunc, for: .touchUpInside)
         ctaButton.backgroundColor = darkGray
         ctaButton.layer.cornerRadius = 5
+        if let hexColor = announcement.ctaButtonColor {
+            ctaButton.backgroundColor = Utils.getColor(hexString: hexColor)
+        } else {
+            ctaButton.backgroundColor = darkGray
+        }
         addSubview(ctaButton)
 
         setupConstraints(announcement)
@@ -94,7 +101,6 @@ internal class NotificationView: UIView {
         let subjectLabelTopPadding: CGFloat = 32
         let subjectLabelHorizontalPadding: CGFloat = 24
         let subjectLabelHeight: CGFloat = 31
-        let imageViewLength: CGFloat = 80
         let imageViewVerticalPadding: CGFloat = 16
         let ctaButtonHorizontalPadding: CGFloat = 24
 
@@ -127,12 +133,14 @@ internal class NotificationView: UIView {
             subjectLabel.heightAnchor.constraint(equalToConstant: subjectLabelHeight)
         ])
 
-        if (announcement.imageUrl != nil){
+        if announcement.imageUrl != nil,
+            let imageHeight = announcement.imageHeight,
+            let imageWidth = announcement.imageWidth {
             NSLayoutConstraint.activate([
                 visualImageView.topAnchor.constraint(equalTo: subjectLabel.bottomAnchor, constant: imageViewVerticalPadding),
                 visualImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                visualImageView.widthAnchor.constraint(equalToConstant: imageViewLength),
-                visualImageView.heightAnchor.constraint(equalToConstant: imageViewLength)
+                visualImageView.widthAnchor.constraint(equalToConstant: CGFloat(imageWidth)),
+                visualImageView.heightAnchor.constraint(equalToConstant: CGFloat(imageHeight))
             ])
         }
 
