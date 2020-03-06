@@ -19,7 +19,6 @@ internal class NotificationViewController: UIViewController {
     init(announcement: Announcement) {
         self.announcement = announcement
         super.init(nibName: nil, bundle: nil)
-        self.modalPresentationStyle = .overFullScreen // Will eventually be changed to a custom presentation animation
     }
 
     override func viewDidLoad() {
