@@ -160,9 +160,10 @@ internal class NotificationView: UIView {
     }
 
     private func topPortionViewHeight(_ announcement: Announcement) -> CGFloat {
+        let imageHeight = CGFloat(announcement.imageHeight ?? 0)
         return announcement.imageUrl == nil
             ? Constants.baseTopPortionViewHeight
-            : Constants.baseTopPortionViewHeight + Constants.extraImageHeight
+            : Constants.baseTopPortionViewHeight + imageHeight
     }
 
     private func bodyLabelHeight(_ announcement: Announcement) -> CGFloat {
