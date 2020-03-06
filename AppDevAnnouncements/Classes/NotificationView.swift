@@ -21,14 +21,15 @@ internal class NotificationView: UIView {
 
     /// Constants
     internal enum Constants {
-        static let notificationViewWidth: CGFloat = 327
         static let baseTopPortionViewHeight: CGFloat = 74
-        static let extraImageHeight: CGFloat = 97
-        static let bodyLabelTopPadding: CGFloat = 24
         static let bodyLabelHorizontalPadding: CGFloat = 16
-        static let ctaButtonTopPadding: CGFloat = 16
-        static let ctaButtonHeight: CGFloat = 38
+        static let bodyLabelTopPadding: CGFloat = 24
         static let ctaButtonBottomPadding: CGFloat = 16
+        static let ctaButtonHeight: CGFloat = 38
+        static let ctaButtonTopPadding: CGFloat = 16
+        static let extraImageHeight: CGFloat = 97
+        static let imageViewVerticalPadding: CGFloat = 16
+        static let notificationViewWidth: CGFloat = 327
     }
     
     internal init(
@@ -60,7 +61,7 @@ internal class NotificationView: UIView {
 
         subjectLabel.translatesAutoresizingMaskIntoConstraints = false
         subjectLabel.textAlignment = .center
-        subjectLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        subjectLabel.font = .systemFont(ofSize: 24, weight: .bold)
         subjectLabel.text = announcement.subject
         addSubview(subjectLabel)
 
@@ -81,6 +82,7 @@ internal class NotificationView: UIView {
 
         ctaButton.translatesAutoresizingMaskIntoConstraints = false
         ctaButton.setTitle(announcement.ctaText, for: .normal)
+        ctaButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         ctaButton.setTitleColor(.white, for: .normal)
         ctaButton.addTarget(target, action: actionFunc, for: .touchUpInside)
         ctaButton.backgroundColor = darkGray
@@ -101,7 +103,6 @@ internal class NotificationView: UIView {
         let subjectLabelTopPadding: CGFloat = 32
         let subjectLabelHorizontalPadding: CGFloat = 24
         let subjectLabelHeight: CGFloat = 31
-        let imageViewVerticalPadding: CGFloat = 16
         let ctaButtonHorizontalPadding: CGFloat = 24
 
         NSLayoutConstraint.activate([
@@ -137,7 +138,7 @@ internal class NotificationView: UIView {
             let imageHeight = announcement.imageHeight,
             let imageWidth = announcement.imageWidth {
             NSLayoutConstraint.activate([
-                visualImageView.topAnchor.constraint(equalTo: subjectLabel.bottomAnchor, constant: imageViewVerticalPadding),
+                visualImageView.topAnchor.constraint(equalTo: subjectLabel.bottomAnchor, constant: Constants.imageViewVerticalPadding),
                 visualImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
                 visualImageView.widthAnchor.constraint(equalToConstant: CGFloat(imageWidth)),
                 visualImageView.heightAnchor.constraint(equalToConstant: CGFloat(imageHeight))
@@ -163,7 +164,7 @@ internal class NotificationView: UIView {
         let imageHeight = CGFloat(announcement.imageHeight ?? 0)
         return announcement.imageUrl == nil
             ? Constants.baseTopPortionViewHeight
-            : Constants.baseTopPortionViewHeight + imageHeight
+            : Constants.baseTopPortionViewHeight + imageHeight + Constants.imageViewVerticalPadding * 2
     }
 
     private func bodyLabelHeight(_ announcement: Announcement) -> CGFloat {
