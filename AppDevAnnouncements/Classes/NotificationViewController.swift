@@ -6,6 +6,7 @@
 //  Copyright © 2019 Cornell AppDev. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 internal class NotificationViewController: UIViewController {
@@ -61,6 +62,7 @@ internal class NotificationViewController: UIViewController {
 }
 
 // MARK: - UIViewController+Extension for notification presentation
+// UIKit implementation
 
 public extension UIViewController {
 
@@ -77,6 +79,35 @@ public extension UIViewController {
                 DispatchQueue.main.async {
                     let notificationVC = NotificationViewController(announcement: announcement)
                     self.present(notificationVC, animated: true)
+                    completion?(true)
+                }
+            } else {
+                completion?(false)
+            }
+        }
+    }
+    
+}
+
+// MARK: - View+Extension for notification presentation
+// SwiftUI implementation
+
+@available(iOS 13.0, *)
+public extension View {
+
+    func presentAnnouncement(completion: ((Bool) -> Void)?) {
+        AnnouncementNetworking.retrieveAnnouncements { announcements in
+            // Find first announcment that has yet to be presented to user
+            let userDefaults = UserDefaults.standard
+            let presentedAnnouncementIDsKey = "presentedAnnouncementIDs"
+
+            let presentedAnnouncementIDs = userDefaults.value(forKey: presentedAnnouncementIDsKey) as? [Int] ?? []
+
+            if let announcement = announcements.first(where: { !presentedAnnouncementIDs.contains($0.id) }) {
+                userDefaults.set(presentedAnnouncementIDs + [announcement.id], forKey: presentedAnnouncementIDsKey)
+                DispatchQueue.main.async {
+                    let notificationVC = NotificationViewController(announcement: announcement)
+                    UIApplication.shared.windows.first?.rootViewController?.present(notificationVC, animated: true)
                     completion?(true)
                 }
             } else {
