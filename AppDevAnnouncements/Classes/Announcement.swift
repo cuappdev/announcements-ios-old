@@ -26,13 +26,13 @@ public struct Announcement: Codable {
     let ctaText: String
 
     /// The height of the image
-    let imageHeight: Int?
+    let imageHeight: Float?
 
     /// The URL of the image
     let imageUrl: String?
 
     /// The width of the image
-    let imageWidth: Int?
+    let imageWidth: Float?
 
     /// The header title of the notification
     let subject: String
