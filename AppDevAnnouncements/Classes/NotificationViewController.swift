@@ -92,10 +92,9 @@ public extension UIViewController {
 // MARK: - View+Extension for notification presentation
 // SwiftUI implementation
 
-@available(iOS 13.0, *)
-public extension View {
+class SwiftUIAnnounce {
 
-    func presentAnnouncement(completion: ((Bool) -> Void)?) {
+    static func presentAnnouncement(completion: ((Bool) -> Void)?) {
         AnnouncementNetworking.retrieveAnnouncements { announcements in
             // Find first announcment that has yet to be presented to user
             let userDefaults = UserDefaults.standard
