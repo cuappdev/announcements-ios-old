@@ -86,7 +86,7 @@ public extension UIViewController {
             }
         }
     }
-    
+
 }
 
 // MARK: - View+Extension for notification presentation

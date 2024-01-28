@@ -37,7 +37,6 @@ public struct Announcement: Codable {
     /// The header title of the notification
     let subject: String
 
-
 }
 
 internal struct Response<T: Codable>: Codable {
@@ -45,5 +44,5 @@ internal struct Response<T: Codable>: Codable {
     let success: Bool
 
     let data: T
-    
+
 }

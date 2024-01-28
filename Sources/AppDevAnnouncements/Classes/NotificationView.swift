@@ -31,7 +31,7 @@ internal class NotificationView: UIView {
         static let imageViewVerticalPadding: CGFloat = 16
         static let notificationViewWidth: CGFloat = 327
     }
-    
+
     internal init(
         announcement: Announcement,
         dismissFunc: Selector,
@@ -66,8 +66,8 @@ internal class NotificationView: UIView {
         addSubview(subjectLabel)
 
         if let unwrappedUrl = announcement.imageUrl,
-            announcement.imageHeight != nil,
-            announcement.imageWidth != nil {
+           announcement.imageHeight != nil,
+           announcement.imageWidth != nil {
             visualImageView.translatesAutoresizingMaskIntoConstraints = false
             visualImageView.contentMode = .scaleAspectFit
             visualImageView.loadFrom(url: unwrappedUrl, completion: nil)
@@ -135,8 +135,8 @@ internal class NotificationView: UIView {
         ])
 
         if announcement.imageUrl != nil,
-            let imageHeight = announcement.imageHeight,
-            let imageWidth = announcement.imageWidth {
+           let imageHeight = announcement.imageHeight,
+           let imageWidth = announcement.imageWidth {
             NSLayoutConstraint.activate([
                 visualImageView.topAnchor.constraint(equalTo: subjectLabel.bottomAnchor, constant: Constants.imageViewVerticalPadding),
                 visualImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -163,8 +163,8 @@ internal class NotificationView: UIView {
     private func topPortionViewHeight(_ announcement: Announcement) -> CGFloat {
         let imageHeight = CGFloat(announcement.imageHeight ?? 0)
         return announcement.imageUrl == nil
-            ? Constants.baseTopPortionViewHeight
-            : Constants.baseTopPortionViewHeight + imageHeight + Constants.imageViewVerticalPadding * 2
+        ? Constants.baseTopPortionViewHeight
+        : Constants.baseTopPortionViewHeight + imageHeight + Constants.imageViewVerticalPadding * 2
     }
 
     private func bodyLabelHeight(_ announcement: Announcement) -> CGFloat {
