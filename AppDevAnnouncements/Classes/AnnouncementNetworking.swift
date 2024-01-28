@@ -14,7 +14,7 @@ public class AnnouncementNetworking {
     static private var announcementURL: URL?
 
     static public func setupConfig(scheme: String, host: String, commonPath: String, announcementPath: String) {
-        if(!scheme.isEmpty && !host.isEmpty && !commonPath.isEmpty && !announcementPath.isEmpty) {
+        if !scheme.isEmpty && !host.isEmpty && !commonPath.isEmpty && !announcementPath.isEmpty {
             var components = URLComponents()
             components.scheme = scheme
             components.host = host
@@ -23,19 +23,19 @@ public class AnnouncementNetworking {
         }
     }
 
-    static internal func retrieveAnnouncements(completion: @escaping (([Announcement]) -> Void)) {
+    static internal func retrieveAnnouncements(completion: @escaping ([Announcement]) -> Void) {
         guard let announcementURL = announcementURL else {
             print("Did not setup config properly")
             return
         }
 
         URLSession.shared.dataTask(with: announcementURL) { (data, response, error) in
-            if let error = error {
+            if let error {
                 print(error.localizedDescription)
                 return
             }
 
-            guard let data = data else { return }
+            guard let data else { return }
 
             let jsonDecoder = JSONDecoder()
             if let apiResponse = try? jsonDecoder.decode(Response<[Announcement]>.self, from: data) {
@@ -56,7 +56,7 @@ internal extension UIImageView {
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { data, _, error in
             if let unwrappedData = data {
-            DispatchQueue.main.async() { self.image = UIImage(data: unwrappedData) }
+                DispatchQueue.main.async() { self.image = UIImage(data: unwrappedData) }
                 completion?(true)
             } else if let unwrappedError = error {
                 print(unwrappedError.localizedDescription)
