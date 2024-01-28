@@ -7,25 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8735A6C723812252007BDF71 /* AnnouncementNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8735A6C623812252007BDF71 /* AnnouncementNetworking.swift */; };
-		87ED7F73235EE12700AE3546 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F6F235EE12700AE3546 /* NotificationView.swift */; };
-		87ED7F74235EE12700AE3546 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F70235EE12700AE3546 /* Announcement.swift */; };
-		87ED7F76235EE12700AE3546 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED7F72235EE12700AE3546 /* NotificationViewController.swift */; };
-		87F8EFB5236E2931002C4755 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F8EFB4236E2931002C4755 /* Utils.swift */; };
-		C20B94A1240F564500EE8ED5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C20B94A0240F564500EE8ED5 /* Images.xcassets */; };
-		C28AAC0E235ED9FF00A0FC09 /* AppDevAnnouncements.h in Headers */ = {isa = PBXBuildFile; fileRef = C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2EA7D2762B65E51600DFA7D5 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7D26D2B65E51600DFA7D5 /* Announcement.swift */; };
+		2EA7D2772B65E51600DFA7D5 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7D26E2B65E51600DFA7D5 /* NotificationView.swift */; };
+		2EA7D2782B65E51600DFA7D5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7D26F2B65E51600DFA7D5 /* Utils.swift */; };
+		2EA7D2792B65E51600DFA7D5 /* AnnouncementNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7D2702B65E51600DFA7D5 /* AnnouncementNetworking.swift */; };
+		2EA7D27A2B65E51600DFA7D5 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA7D2712B65E51600DFA7D5 /* NotificationViewController.swift */; };
+		2EA7D27B2B65E51600DFA7D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EA7D2732B65E51600DFA7D5 /* Images.xcassets */; };
+		2EA7D27C2B65E51600DFA7D5 /* AppDevAnnouncements.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EA7D2742B65E51600DFA7D5 /* AppDevAnnouncements.h */; };
+		2EA7D27D2B65E51600DFA7D5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EA7D2752B65E51600DFA7D5 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8735A6C623812252007BDF71 /* AnnouncementNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementNetworking.swift; sourceTree = "<group>"; };
-		87ED7F6F235EE12700AE3546 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		87ED7F70235EE12700AE3546 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
-		87ED7F72235EE12700AE3546 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		87F8EFB4236E2931002C4755 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		C20B94A0240F564500EE8ED5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2EA7D26D2B65E51600DFA7D5 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		2EA7D26E2B65E51600DFA7D5 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		2EA7D26F2B65E51600DFA7D5 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2EA7D2702B65E51600DFA7D5 /* AnnouncementNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementNetworking.swift; sourceTree = "<group>"; };
+		2EA7D2712B65E51600DFA7D5 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		2EA7D2732B65E51600DFA7D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2EA7D2742B65E51600DFA7D5 /* AppDevAnnouncements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDevAnnouncements.h; sourceTree = "<group>"; };
+		2EA7D2752B65E51600DFA7D5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C28AAC09235ED9FF00A0FC09 /* AppDevAnnouncements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppDevAnnouncements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDevAnnouncements.h; sourceTree = "<group>"; };
-		C28AAC0D235ED9FF00A0FC09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +40,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EA7D26B2B65E51600DFA7D5 /* AppDevAnnouncements */ = {
+			isa = PBXGroup;
+			children = (
+				2EA7D26C2B65E51600DFA7D5 /* Classes */,
+				2EA7D2722B65E51600DFA7D5 /* Resources */,
+				2EA7D2742B65E51600DFA7D5 /* AppDevAnnouncements.h */,
+				2EA7D2752B65E51600DFA7D5 /* Info.plist */,
+			);
+			name = AppDevAnnouncements;
+			path = Sources/AppDevAnnouncements;
+			sourceTree = "<group>";
+		};
+		2EA7D26C2B65E51600DFA7D5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2EA7D26D2B65E51600DFA7D5 /* Announcement.swift */,
+				2EA7D26E2B65E51600DFA7D5 /* NotificationView.swift */,
+				2EA7D26F2B65E51600DFA7D5 /* Utils.swift */,
+				2EA7D2702B65E51600DFA7D5 /* AnnouncementNetworking.swift */,
+				2EA7D2712B65E51600DFA7D5 /* NotificationViewController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2EA7D2722B65E51600DFA7D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2EA7D2732B65E51600DFA7D5 /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		3117B8214120268A3076BB3B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -46,18 +79,10 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C20B9492240F516E00EE8ED5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				C20B94A0240F564500EE8ED5 /* Images.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		C28AABFF235ED9FF00A0FC09 = {
 			isa = PBXGroup;
 			children = (
-				C28AAC0B235ED9FF00A0FC09 /* AppDevAnnouncements */,
+				2EA7D26B2B65E51600DFA7D5 /* AppDevAnnouncements */,
 				C28AAC0A235ED9FF00A0FC09 /* Products */,
 				3117B8214120268A3076BB3B /* Pods */,
 			);
@@ -71,29 +96,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C28AAC0B235ED9FF00A0FC09 /* AppDevAnnouncements */ = {
-			isa = PBXGroup;
-			children = (
-				C20B9492240F516E00EE8ED5 /* Resources */,
-				C28AAC14235EDAA400A0FC09 /* Classes */,
-				C28AAC0C235ED9FF00A0FC09 /* AppDevAnnouncements.h */,
-				C28AAC0D235ED9FF00A0FC09 /* Info.plist */,
-			);
-			path = AppDevAnnouncements;
-			sourceTree = "<group>";
-		};
-		C28AAC14235EDAA400A0FC09 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				87ED7F70235EE12700AE3546 /* Announcement.swift */,
-				8735A6C623812252007BDF71 /* AnnouncementNetworking.swift */,
-				87ED7F6F235EE12700AE3546 /* NotificationView.swift */,
-				87ED7F72235EE12700AE3546 /* NotificationViewController.swift */,
-				87F8EFB4236E2931002C4755 /* Utils.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -101,7 +103,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C28AAC0E235ED9FF00A0FC09 /* AppDevAnnouncements.h in Headers */,
+				2EA7D27C2B65E51600DFA7D5 /* AppDevAnnouncements.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +166,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C20B94A1240F564500EE8ED5 /* Images.xcassets in Resources */,
+				2EA7D27B2B65E51600DFA7D5 /* Images.xcassets in Resources */,
+				2EA7D27D2B65E51600DFA7D5 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,11 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8735A6C723812252007BDF71 /* AnnouncementNetworking.swift in Sources */,
-				87ED7F74235EE12700AE3546 /* Announcement.swift in Sources */,
-				87ED7F76235EE12700AE3546 /* NotificationViewController.swift in Sources */,
-				87ED7F73235EE12700AE3546 /* NotificationView.swift in Sources */,
-				87F8EFB5236E2931002C4755 /* Utils.swift in Sources */,
+				2EA7D27A2B65E51600DFA7D5 /* NotificationViewController.swift in Sources */,
+				2EA7D2792B65E51600DFA7D5 /* AnnouncementNetworking.swift in Sources */,
+				2EA7D2762B65E51600DFA7D5 /* Announcement.swift in Sources */,
+				2EA7D2772B65E51600DFA7D5 /* NotificationView.swift in Sources */,
+				2EA7D2782B65E51600DFA7D5 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
